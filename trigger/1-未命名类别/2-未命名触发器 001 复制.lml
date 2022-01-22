@@ -1,0 +1,35 @@
+事件
+条件
+动作
+    SetPlayerState
+        预设: Player00
+        预设: PlayerStateGold
+        常量: 750
+    YDWESetAnyTypeLocalVariable
+        预设: typename13_player
+        常量: player
+        函数: DzGetTriggerUIEventPlayer
+    ForForceMultiple
+        函数: GetPlayersByMapControl
+            函数: GetPlayerController
+                预设: Player00
+    YDWESetAnyTypeLocalVariable
+        预设: typename13_player
+        常量: xx
+        预设: Player00
+    IfThenElse
+        条件: OperatorComparePlayerControl
+            函数: GetPlayerController
+                预设: Player00
+            预设: OperatorEqualENE
+            预设: MapControlUser
+        动作: DoNothing
+        动作: DoNothing
+    IfThenElse
+        条件: OperatorComparePlayerControl
+            函数: GetPlayerController
+                预设: Player00
+            预设: OperatorEqualENE
+            预设: MapControlUser
+        动作: DoNothing
+        动作: DoNothing

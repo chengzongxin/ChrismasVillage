@@ -1,8 +1,11 @@
 事件
 条件
 动作
-    DisplayTextToPlayer
+    SetPlayerState
         预设: Player00
-        常量: 0
-        常量: 0
-        常量: test
+        预设: PlayerStateGold
+        常量: 750
+    YDWESetAnyTypeLocalVariable
+        预设: typename13_player
+        常量: player
+        函数: DzGetTriggerUIEventPlayer

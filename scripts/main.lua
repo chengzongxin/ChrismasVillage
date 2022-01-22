@@ -1,5 +1,5 @@
 require 'kit.kit'
-
+require 'global.global'
 local std_print = print
 
 function print(...)
