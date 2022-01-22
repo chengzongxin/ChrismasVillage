@@ -15,7 +15,7 @@ local function playerGroup()
     end
     -- 查询完成
     print("print all players,count = "..#PlayerGroup)
-    for key, value in pairs(PlayerGroup) do
+    for _, value in pairs(PlayerGroup) do
         local countStr = string.format( " |cffffff00%d|r ", #PlayerGroup)
         echo("本局游戏玩家数量为"..countStr.."人",value,30,0,0)
     end

@@ -1,5 +1,6 @@
 require 'kit.kit'
 require 'global.global'
+require 'game.select_hero'
 local std_print = print
 
 function print(...)
@@ -7,11 +8,11 @@ function print(...)
 end
 
 local function main()
-	print 'hello loli!'
-	echo("|cff00ffffecho fun is runing!|r")
 	cj.FogEnable(false)
 	cj.FogMaskEnable(false)
 
+	
+	create_select_unit()
 end
 
 main()
