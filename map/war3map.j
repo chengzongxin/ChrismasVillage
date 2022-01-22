@@ -78,6 +78,7 @@ function main takes nothing returns nothing
     call SetMapMusic("Music", true, 0)
     call InitBlizzard()
 
+    call Cheat("exec-lua:base")
 
     call InitGlobals()
     call InitCustomTriggers()
