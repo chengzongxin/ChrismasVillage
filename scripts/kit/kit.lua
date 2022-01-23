@@ -1,5 +1,7 @@
 cj = require "jass.common"
 cg = require "jass.globals"
+require 'kit.echo'
+
 -- bj = require "blizzard"
 -- 物编转id
 function str2id(a)
@@ -20,4 +22,23 @@ function select_unit(whichUnit,whichPlayer)
     end
 end
 
-require 'kit.echo'
+-- 等待时间
+function polled_wait(duration)
+    local timer t = nil
+    local real  timeRemaining = nil
+
+    if duration > 0 then
+        local t = cj.CreateTimer()
+        cj.TimerStart(t, duration, false, nil)
+
+        timeRemaining = cj.TimerGetRemaining(t)
+        while timeRemaining <= 0 do
+            if timeRemaining > duration then
+                cj.TriggerSleepAction(0.1 * timeRemaining)
+            else
+                cj.TriggerSleepAction(0.1)
+            end
+        end
+        cj.DestroyTimer(t)
+    end
+end
