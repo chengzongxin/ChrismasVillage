@@ -24,3 +24,15 @@ cevent.spell_effect = function(whichUnit,callFun)
     cj.TriggerRegisterUnitEvent(trg, whichUnit, cj.EVENT_UNIT_SPELL_EFFECT)
     cj.TriggerAddAction(trg,callFun)
 end
+
+--- 单位死亡
+---@alias onUnitdDeath
+---@param callFunc onUnitdDeath
+---@return any
+cevent.unit_death = function(callFun)
+    local trg = cj.CreateTrigger()
+    for i = 1, MAX_PLAYER_QTY do
+        cj.TriggerRegisterPlayerUnitEvent(trg, cj.Player(i), cj.EVENT_PLAYER_UNIT_DEATH, nil)
+        cj.TriggerAddAction(trg,callFun)
+    end
+end

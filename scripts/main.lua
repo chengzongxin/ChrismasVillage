@@ -3,6 +3,7 @@ require 'kit.cevent'
 require 'game.game_init'
 require 'game.select_hero'
 require 'game.shuaguai'
+require 'game.unit_death'
 
 local std_print = print
 
