@@ -10,11 +10,13 @@ function str2id(a)
     return r
 end
 
--- function PanCameraToTimedLocForPlayer takes player whichPlayer, location loc, real duration returns nothing
---     if (GetLocalPlayer() == whichPlayer) then
---         // Use only local code (no net traffic) within this block to avoid desyncs.
---         call PanCameraToTimed(GetLocationX(loc), GetLocationY(loc), duration)
---     endif
--- endfunction
+
+-- 命令玩家选中单位
+function select_unit(whichUnit,whichPlayer)
+    if cj.GetLocalPlayer() == whichPlayer then
+        cj.ClearSelection()
+        cj.SelectUnit(whichUnit, true)
+    end
+end
 
 require 'kit.echo'

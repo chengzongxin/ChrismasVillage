@@ -1,3 +1,5 @@
+//TESH.scrollpos=1
+//TESH.alwaysfold=0
 function Trig____________________002Actions takes nothing returns nothing
     YDLocalInitialize()
     if ((GetPlayerController(Player(0)) == MAP_CONTROL_USER)) then
@@ -13,7 +15,7 @@ function Trig____________________002Actions takes nothing returns nothing
     call PanCameraToTimedLocForPlayer(Player(0), YDLocal1Get(location, "p"), 0)
     call YDLocal1Set(abilcode, "skill", GetSpellAbilityId())
     call YDLocal1Set(abilcode, "skill", GetSpellAbilityId())
-    YDTrigger Error: ÄãÊ¹ÓÃÁË¾Ö²¿±äÁ¿¡°p¡±(ÀàĞÍ:player)£¬µ«ÄãÔÚÆäËûµØ·½Ê¹ÓÃµÄÊÇ¾Ö²¿±äÁ¿¡°p¡±(ÀàĞÍ:location)¡£
+    YDTrigger Error: _______Â±å¿_Â°p_Â±(`Ñ:player)ï¿¡_Î¼_____Î¼____Î¼____Â±å¿_Â°p_Â±(`Ñ:location)_ï¿¡
     call YDLocal1Set(player, "p", GetOwningPlayer(GetTriggerUnit()))
     call RemoveUnit(GetTriggerUnit())
     call YDLocal1Release()
