@@ -1,5 +1,5 @@
-cj = require "jass.common"
-cg = require "jass.globals"
+cj = require "cj.common"
+cg = require "cj.globals"
 require 'kit.echo'
 
 -- bj = require "blizzard"
@@ -41,4 +41,18 @@ function polled_wait(duration)
         end
         cj.DestroyTimer(t)
     end
+end
+
+-- 等待时间
+function time_wait(duration,callFunc)
+    local t = cj.CreateTrigger()
+    cj.TriggerRegisterTimerEvent(t, duration, false)
+    cj.TriggerAddAction(t, function()
+        cj.DisableTrigger(t)
+        cj.DestroyTrigger(t)
+        t = nil
+        if (type(callFunc) == "function") then
+            callFunc()
+        end
+    end)
 end
