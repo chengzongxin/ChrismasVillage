@@ -1,5 +1,5 @@
-cj = require "cj.common"
-cg = require "cj.globals"
+cj = require "jass.common"
+cg = require "jass.globals"
 require 'kit.echo'
 
 -- bj = require "blizzard"

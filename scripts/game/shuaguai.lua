@@ -2,18 +2,24 @@
 local boci = 1
 shuaguai = {}
 
+local function init_AIPool()
+    local aip = cj.CreateUnitPool()
+    cj.UnitPoolAddUnitType(aip, str2id('n000:nska'), 1)
+    cj.UnitPoolAddUnitType(aip, str2id('u000:uske'), 1)
+    cj.UnitPoolAddUnitType(aip, str2id('u001:uskm'), 1)
+    shuaguai.AIPool = aip
+end
+
 -- 计时器事件
 local function timerEvent()
     for i=1,#regions do
         local r = regions[i]
         local x = cj.GetRectCenterX(r)
         local y = cj.GetRectCenterY(r)
-        local id = str2id('hfoo')
-        local u = cj.CreateUnit(cj.Player(5),id,x,y,0)
-        print(u..cj.GetUnitName(u))
+        local u = cj.PlaceRandomUnit(shuaguai.AIPool, cj.Player(5), x, y, 0)
         cj.IssuePointOrder(u, "attack", 0, 0)
     end
-end
+end 
 
 -- 创建计时器窗口
 local function showTimerDialog()
@@ -40,11 +46,11 @@ local function createTimer()
         echo(tips)
         timerEvent()
         boci = boci + 1
-        print(type(timer)..timer)
     end)
 end
 
 SHUAGUAI = function()
+    init_AIPool()
     createTimer()
     showTimerDialog()
 end

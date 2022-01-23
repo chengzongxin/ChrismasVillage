@@ -1,0 +1,10 @@
+事件
+条件
+动作
+    YDWECreateUnitPool
+    YDWEPlaceRandomUnit
+        预设: bj_lastCreatedUnitPool
+        预设: Player00
+        常量: 0
+        常量: 0
+        常量: 0

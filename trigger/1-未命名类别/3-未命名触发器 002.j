@@ -1,4 +1,4 @@
-//TESH.scrollpos=1
+//TESH.scrollpos=0
 //TESH.alwaysfold=0
 function Trig____________________002Actions takes nothing returns nothing
     YDLocalInitialize()

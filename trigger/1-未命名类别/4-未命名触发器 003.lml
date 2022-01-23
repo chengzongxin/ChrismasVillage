@@ -1,0 +1,26 @@
+事件
+条件
+动作
+    YDWESetAnyTypeLocalVariable
+        预设: typename08_unitcode
+        常量: ut
+        常量: H000
+    ' CreateUnit'
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: p
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: ut
+        常量: 0.00
+        常量: 0.00
+        预设: RealUnitFacing
+    ' CreateUnit'
+        函数: YDWEGetAnyTypeLocalVariable
+            常量: p
+        常量: H003
+        常量: 0.00
+        常量: 0.00
+        预设: RealUnitFacing
+    AddSpecialEffectTargetUnitBJ
+        常量: overhead
+        函数: GetTriggerUnit
+        常量: Abilities\Spells\Demon\ReviveDemon\ReviveDemon.mdl
