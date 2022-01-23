@@ -1,9 +1,9 @@
 
 -- 刷怪區域
-region1 = cg.gg_rct_region1
-region2 = cg.gg_rct_region2
-region3 = cg.gg_rct_region3
-region4 = cg.gg_rct_region4
+region1 = cg.gg_rct_monster_rect1
+region2 = cg.gg_rct_monster_rect2
+region3 = cg.gg_rct_monster_rect3
+region4 = cg.gg_rct_monster_rect4
 regions = {region1,region2,region3,region4}
 
 -- 最大玩家数
