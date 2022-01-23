@@ -1,10 +1,11 @@
+japi = require "jass.japi"
 
 local boci = 1
 shuaguai = {}
 
 local function init_AIPool()
     local aip = cj.CreateUnitPool()
-    cj.UnitPoolAddUnitType(aip, str2id('n000:nska'), 1)
+    cj.UnitPoolAddUnitType(aip, str2id('n000:nsca'), 1)
     cj.UnitPoolAddUnitType(aip, str2id('u000:uske'), 1)
     cj.UnitPoolAddUnitType(aip, str2id('u001:uskm'), 1)
     shuaguai.AIPool = aip
@@ -17,6 +18,12 @@ local function timerEvent()
         local x = cj.GetRectCenterX(r)
         local y = cj.GetRectCenterY(r)
         local u = cj.PlaceRandomUnit(shuaguai.AIPool, cj.Player(5), x, y, 0)
+    -- 设置单位属性 注意要先设置最大生命值，否则设置当前生命值超出了还是无法改变生命值
+        local life = 20 + boci * 3
+        local damage = 7 + boci * 1
+        japi.SetUnitState(u, cj.UNIT_STATE_MAX_LIFE, life)
+        japi.SetUnitState(u, cj.UNIT_STATE_LIFE, life)
+        japi.SetUnitState(u, cj.ConvertUnitState(0x12), damage)
         cj.IssuePointOrder(u, "attack", 0, 0)
     end
 end 
@@ -24,7 +31,7 @@ end
 -- 创建计时器窗口
 local function showTimerDialog()
     local d = cj.CreateTimerDialog(shuaguai.timer)
-    cj.TimerDialogSetTitle(d,"第几波")
+    cj.TimerDialogSetTitle(d,"准备进攻")
     cj.TimerDialogDisplay(d,true)
     local show = cj.IsTimerDialogDisplayed(d)
     shuaguai.dialog = d
