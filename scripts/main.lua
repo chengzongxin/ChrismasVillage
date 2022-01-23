@@ -1,6 +1,8 @@
 require 'kit.kit'
 require 'global.global'
 require 'game.select_hero'
+require 'kit.cevent'
+
 local std_print = print
 
 function print(...)
