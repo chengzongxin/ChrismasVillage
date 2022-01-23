@@ -1,7 +1,7 @@
 require 'kit.kit'
-require 'global.global'
-require 'game.select_hero'
 require 'kit.cevent'
+require 'game.game_init'
+require 'game.select_hero'
 require 'game.shuaguai'
 
 local std_print = print

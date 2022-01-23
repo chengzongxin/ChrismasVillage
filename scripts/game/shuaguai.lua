@@ -17,7 +17,7 @@ local function timerEvent()
         local r = regions[i]
         local x = cj.GetRectCenterX(r)
         local y = cj.GetRectCenterY(r)
-        local u = cj.PlaceRandomUnit(shuaguai.AIPool, cj.Player(5), x, y, 0)
+        local u = cj.PlaceRandomUnit(shuaguai.AIPool, ENMIMY_PLAYER, x, y, 0)
     -- 设置单位属性 注意要先设置最大生命值，否则设置当前生命值超出了还是无法改变生命值
         local life = 20 + boci * 3
         local damage = 7 + boci * 1
