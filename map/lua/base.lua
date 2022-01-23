@@ -1,5 +1,6 @@
 local runtime	= require 'jass.runtime'
 local console	= require 'jass.console'
+local jass = require 'jass.common'
 
 base = {}
 
@@ -48,3 +49,16 @@ end
 
 --初始化本地脚本
 require 'main'
+
+---- 某些方法必须延迟，比如计时器窗口，不能在地图初始化时显示 ----
+local t = jass.CreateTrigger()
+jass.TriggerRegisterTimerEvent(t, 0.1, false)
+jass.TriggerAddAction(t, function()
+	jass.DisableTrigger(t)
+	jass.DestroyTrigger(t)
+	
+	t = nil
+	if (type(main) == "function") then
+		main()
+	end
+end)

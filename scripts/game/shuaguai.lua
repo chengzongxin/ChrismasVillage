@@ -5,18 +5,16 @@ shuaguai = {}
 -- 计时器事件
 local function timerEvent()
     local array = regions
+    for i, value in pairs(array) do
+        print("array .. "..i.." is : "..value)
+    end
     for i=1,#array do
         local r = array[i]
         local x = cj.GetRectCenterX(r)
         local y = cj.GetRectCenterY(r)
-        local j_id = str2id('hfoo')
-        local u = cj.CreateUnit(
-                cj.Player(2),
-                j_id,
-                x,
-                y,
-                0
-        )
+        local id = str2id('hfoo')
+        local u = cj.CreateUnit(cj.Player(5),id,x,y,0)
+        print(u..cj.getUnitName(u))
         cj.IssuePointOrder(u, "attack", 0, 0)
     end
 end
