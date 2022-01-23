@@ -1,5 +1,5 @@
 
-function create_select_unit()
+local function create_select_unit()
     echo("|cffff0000请|r|cffdb2400选|r|cffb74800择|r|cff926d00你|r|cff6e9100的|r|cff49b600英|r|cff25da00雄|r|cff00ff00！|r",nil,30,0,0)
     for _, player in pairs(PlayerGroup) do
         -- 创建小精灵
@@ -10,12 +10,12 @@ function create_select_unit()
         -- 平移镜头
         cj.PanCameraToTimed(cj.GetUnitX(u), cj.GetUnitY(u), 0)
         select_unit(u,player)
-	    spell_skill_catch(u)
+        return u
     end
 end
 
 
-function spell_skill_catch(whichUnit)
+local function spell_skill_catch(whichUnit)
     cevent.spell_effect(whichUnit,function ()
         local abi_id = cj.GetSpellAbilityId()
         local u = cj.GetTriggerUnit()
@@ -43,4 +43,11 @@ function spell_skill_catch(whichUnit)
         cj.RemoveUnit(u)
         select_unit(hero,p)
     end)
+end
+
+
+SELECT_HERO = function()
+    print "SELECT_HERO method invoke!"
+    local u = create_select_unit()
+    spell_skill_catch(u)
 end

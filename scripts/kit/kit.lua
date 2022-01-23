@@ -1,4 +1,5 @@
 cj = require "jass.common"
+cg = require "jass.globals"
 -- bj = require "blizzard"
 -- 物编转id
 function str2id(a)

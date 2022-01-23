@@ -1,6 +1,14 @@
--- 检测玩家数
-MAX_PLAYER_QTY = 12
 
+-- 刷怪區域
+region1 = cg.gg_rct_region1
+region2 = cg.gg_rct_region2
+region3 = cg.gg_rct_region3
+region4 = cg.gg_rct_region4
+regions = {region1,region2,region3,region4}
+
+-- 最大玩家数
+MAX_PLAYER_QTY = 12
+-- 玩家組
 PlayerGroup = {}
 
 local function playerGroup()

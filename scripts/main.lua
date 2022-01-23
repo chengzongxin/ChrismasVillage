@@ -2,6 +2,7 @@ require 'kit.kit'
 require 'global.global'
 require 'game.select_hero'
 require 'kit.cevent'
+require 'game.shuaguai'
 
 local std_print = print
 
@@ -12,9 +13,10 @@ end
 local function main()
 	cj.FogEnable(false)
 	cj.FogMaskEnable(false)
-
-	
-	create_select_unit()
+	-- 選擇英雄
+	SELECT_HERO()
+	-- 刷怪
+	SHUAGUAI()
 end
 
 main()
