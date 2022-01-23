@@ -42,6 +42,9 @@ local function spell_skill_catch(whichUnit)
 
         cj.RemoveUnit(u)
         select_unit(hero,p)
+        -- 添加復活之焰特效
+        local effect = cj.AddSpecialEffectTarget("Abilities\\Spells\\Demon\\ReviveDemon\\ReviveDemon.mdl",hero,"overhead")
+        cj.DestroyEffect(effect)
     end)
 end
 
