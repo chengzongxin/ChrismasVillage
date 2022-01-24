@@ -31,7 +31,7 @@ end
 ---@return any
 cevent.unit_death = function(callFun)
     local trg = cj.CreateTrigger()
-    for i = 1, MAX_PLAYER_QTY do
+    for i = 0, MAX_PLAYER_QTY - 1 do
         cj.TriggerRegisterPlayerUnitEvent(trg, cj.Player(i), cj.EVENT_PLAYER_UNIT_DEATH, nil)
     end
     cj.TriggerAddAction(trg,callFun)
