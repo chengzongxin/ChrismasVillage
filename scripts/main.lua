@@ -1,5 +1,7 @@
 require 'kit.kit'
 require 'kit.cevent'
+require 'kit.multiboard'
+require 'game.players'
 require 'game.game_init'
 require 'game.select_hero'
 require 'game.shuaguai'
@@ -19,4 +21,6 @@ function main()
 	SELECT_HERO()
 	-- 刷怪
 	SHUAGUAI()
+	-- 多面板
+	MULTIBOARD()
 end

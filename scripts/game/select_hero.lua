@@ -39,7 +39,9 @@ local function spell_skill_catch(whichUnit)
             echo("选择牛头人")
             hero = cj.CreateUnit(p,str2id('H000:Hpal'),x,y,0)
         end
-
+        -- 玩家选择英雄全局缓存
+        PLAYERS.player_hero_create(hero)
+        echo(PLAYERS[p].name.." 选择了英雄 : "..PLAYERS[p].hero.name)
         cj.RemoveUnit(u)
         select_unit(hero,p)
         -- 添加復活之焰特效
