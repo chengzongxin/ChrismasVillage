@@ -7,8 +7,8 @@ local function unit_death()
         if cj.IsUnitEnemy(du, HOST_PLAYER) then
             -- 计分
             print("killunit :"..ku.." killed :"..du)
-            PlayerKill = PlayerKill + 1
-            print(PlayerKill)
+            local p = cj.GetOwningPlayer(ku)
+            PLAYERS[p].kill = PLAYERS[p].kill + 1 
         elseif cj.IsUnitEnemy(du, HOST_PLAYER) then
             -- 复活英雄
         end

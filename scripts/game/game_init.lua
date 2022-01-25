@@ -17,11 +17,6 @@ PlayerGroup = {}
 -- 设置敌人奖励
 cj.SetPlayerState(ENMIMY_PLAYER, cj.PLAYER_STATE_GIVES_BOUNTY, 1)
 
--- 杀敌数 
--- PlayerKill = 0
-PlayerKill = {}
-
-
 
 local function playerGroup()
     -- 循环遍历玩家数
