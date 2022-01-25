@@ -44,8 +44,8 @@ function polled_wait(duration)
     return t
 end
 
--- 等待时间
-function time_wait(duration,callFunc)
+-- 等待时间，触发
+function time_event_wait(duration,callFunc)
     local t = cj.CreateTrigger()
     cj.TriggerRegisterTimerEvent(t, duration, false)
     cj.TriggerAddAction(t, function()
@@ -58,6 +58,18 @@ function time_wait(duration,callFunc)
     end)
     return t
 end
+
+-- 等待时间,计时器
+function time_wait(duration,callFunc)
+    local timer = cj.CreateTimer()
+    cj.TimerStart(timer, duration, false, function ()
+        cj.DestroyTimer(timer)
+        callFunc()
+    end)
+    return timer
+end
+
+
 
 
 -- 创建计时器窗口
