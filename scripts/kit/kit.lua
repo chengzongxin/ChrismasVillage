@@ -41,6 +41,7 @@ function polled_wait(duration)
         end
         cj.DestroyTimer(t)
     end
+    return t
 end
 
 -- 等待时间
@@ -55,4 +56,24 @@ function time_wait(duration,callFunc)
             callFunc()
         end
     end)
+    return t
+end
+
+
+-- 创建计时器窗口
+---@param timer 计时器
+---@param title 计时器标题
+---@return timerdialog
+function create_timer_Dialog(timer,title)
+    local d = cj.CreateTimerDialog(timer)
+    cj.TimerDialogSetTitle(d,title)
+    cj.TimerDialogDisplay(d,true)
+    return d
+end
+
+-- 创建计时器窗口
+---@param timerdialog 计时器窗口
+---@return any
+function destroy_timer_Dialog(timerDialog)
+    cj.DestroyTimerDialog(timerDialog)
 end

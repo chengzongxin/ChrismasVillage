@@ -24,19 +24,15 @@ local function spell_skill_catch(whichUnit)
         local y = cj.GetUnitY(u)
         local hero = nil
         if abi_id == str2id('A005:ANcl') then
-            echo("选择步兵")
             hero = cj.CreateUnit(p,str2id('H003:Hpal'),x,y,0)
         end
         if abi_id == str2id('A007:ANcl') then
-            echo("选择弓箭手")
             hero = cj.CreateUnit(p,str2id('H004:Hpal'),x,y,0)
         end
         if abi_id == str2id('A006:ANcl') then
-            echo("选择火枪手")
             hero = cj.CreateUnit(p,str2id('H002:Hpal'),x,y,0)
         end
         if abi_id == str2id('A003:ANcl') then
-            echo("选择牛头人")
             hero = cj.CreateUnit(p,str2id('H000:Hpal'),x,y,0)
         end
         -- 玩家选择英雄全局缓存

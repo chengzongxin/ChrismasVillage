@@ -7,11 +7,15 @@ local function unit_death()
 
         if cj.IsUnitEnemy(du, HOST_PLAYER) then
             -- 计分
-            print("killunit :"..ku.." killed :"..du)
             PLAYERS[p].kill = PLAYERS[p].kill + 1 
-        elseif cj.IsUnitEnemy(du, HOST_PLAYER) then
+        elseif cj.IsUnitAlly(du, HOST_PLAYER) then
             -- 复活英雄
-            cj.ReviveHero(du, 0, 0, true)
+            local td = nil
+            local t = time_wait(5, function ()
+                cj.ReviveHero(du, 0, 0, true)
+                destroy_timer_Dialog(td)
+            end)
+            td = create_timer_Dialog(t,cj.GetUnitName(du).."复活中...")
         elseif cj.IsUnitEnemy(du, HOST_PLAYER) then
             -- 基地被摧毁，任务失败
             -- CustomDefeatBJ bj 函数
