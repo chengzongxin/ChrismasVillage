@@ -5,7 +5,8 @@ require 'game.players'
 require 'game.game_init'
 require 'game.select_hero'
 require 'game.shuaguai'
-require 'game.unit_death'
+require 'event.unit_death'
+require 'event.unit_damage'
 
 local std_print = print
 
