@@ -89,3 +89,7 @@ end
 function destroy_timer_Dialog(timerDialog)
     cj.DestroyTimerDialog(timerDialog)
 end
+
+function uname(unit)
+    return cj.GetUnitName(unit)
+end

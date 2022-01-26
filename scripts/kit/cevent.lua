@@ -86,15 +86,7 @@ end
 
 
 function YDWEAnyUnitDamagedTriggerAction()
-    print(DamageEventNumber.."damage event did trigger!!!")
-    local i = 0
-    while i >= DamageEventNumber do
-        --if DamageEventQueue[i] ~= nil and cj.IsTriggerEnabled(DamageEventQueue[i]) and cj.TriggerEvaluate(DamageEventQueue[i]) then
-            print(DamageEventFuncQueue[i])
-        if DamageEventFuncQueue[i] ~= nil then
-            -- cj.TriggerExecute(DamageEventQueue[i])
-            DamageEventFuncQueue[i]()
-        end
-        i = i + 1
+    for i = 0, DamageEventNumber-1 do
+        DamageEventFuncQueue[i]()
     end
 end
