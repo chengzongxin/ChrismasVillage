@@ -5,11 +5,10 @@ local function unit_damage()
         local ut = cj.GetTriggerUnit()
         local dmg = cj.GetEventDamage()
 
-        print(uname(us).." attck "..uname(ut).." damage = "..dmg)
+        -- print(uname(us).." attck "..uname(ut).." damage = "..dmg)
         local x = cj.GetUnitX(ut)
         local y = cj.GetUnitY(ut)
-        local str = DrawGold(tostring(dmg))
-        print(str)
+        local str = DrawGold(tostring(math.floor(dmg)))
         TextTag(str, x, y, 50, 15)
     end)
 end
