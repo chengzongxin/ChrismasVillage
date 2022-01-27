@@ -77,7 +77,7 @@ end
 function YDWEAnyUnitDamagedFilter()
     local u = cj.GetTriggerUnit()
     local un = uname(u) or "nil unit ..."
-    print(un.."enter map will register damage event???")
+    -- print(un.."enter map will register damage event???")
     if u ~= nil and cj.GetUnitAbilityLevel(u, 'Aloc') <= 0 then
         cj.TriggerRegisterUnitEvent(yd_DamageEventTrigger, u, cj.EVENT_UNIT_DAMAGED)
     end
