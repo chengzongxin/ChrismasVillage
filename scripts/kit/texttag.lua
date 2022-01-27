@@ -6,7 +6,7 @@ function TextTag(text,x,y,height,size)
     cj.SetTextTagVisibility(t, true)
     local xv = random(-0.6, 0.6)
     local yv = (1 - xv^2)^0.5
-    cj.SetTextTagVelocity(t,xv.yv)
+    cj.SetTextTagVelocity(t,xv,yv)
     time_wait(3,function ()
         cj.DestroyTextTag(t)
     end)
