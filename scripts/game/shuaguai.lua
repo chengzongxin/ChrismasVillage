@@ -1,4 +1,4 @@
-japi = require "jass.japi"
+
 
 local boci = 1
 shuaguai = {}

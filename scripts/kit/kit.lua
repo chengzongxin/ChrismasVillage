@@ -1,7 +1,8 @@
-cj = require "jass.common"
-cg = require "jass.globals"
 require 'kit.echo'
-
+require 'kit.cevent'
+require 'kit.multiboard'
+require 'kit.texttag'
+require 'kit.colordef'
 -- bj = require "blizzard"
 -- 物编转id
 function str2id(a)

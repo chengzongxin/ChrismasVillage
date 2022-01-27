@@ -6,7 +6,9 @@ PLAYERS = {
         hero = {
             hp = 0,
             mp = 0,
-            name = ''
+            name = '',
+            critical = 30,
+            criticalpower = 2
         }
     }
 } 
@@ -19,16 +21,11 @@ PLAYERS.player_create = function (handle)
     PLAYERS[handle] = {
             index = cj.GetPlayerController(handle),
             name = cj.GetPlayerName(handle) or '',
-            kill = 0,
-            hero = {
-                hp = 0,
-                mp = 0,
-                name = ''
-            }
+            kill = 0
         }
 end
 
----初始化player全局玩家table
+---选择英雄后，填充英雄属性
 ---@param handle unit
 ---@return any
 PLAYERS.player_hero_create = function (handle)
@@ -36,6 +33,16 @@ PLAYERS.player_hero_create = function (handle)
     PLAYERS[player].hero = {
         hp = 0,
         mp = 0,
-        name = cj.GetUnitName(handle)
+        name = cj.GetUnitName(handle),
+        critical = 30,
+        criticalpower = 2
     }
+end
+
+---根据英雄获取存储英雄属性
+---@param unit 英雄
+---@return any 属性
+PLAYERS.HERO = function (unit)
+    local player = cj.GetOwningPlayer(unit)
+    return PLAYERS[player].hero
 end

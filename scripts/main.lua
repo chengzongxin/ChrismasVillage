@@ -1,8 +1,7 @@
+cj = require "jass.common"
+cg = require "jass.globals"
+japi = require "jass.japi"
 require 'kit.kit'
-require 'kit.cevent'
-require 'kit.multiboard'
-require 'kit.texttag'
-require 'kit.colordef'
 require 'game.players'
 require 'game.game_init'
 require 'game.select_hero'

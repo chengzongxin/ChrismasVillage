@@ -1,4 +1,3 @@
-local cj = require 'jass.common'
 --- 在屏幕打印信息给所有玩家
 ---@param msg string
 ---@param whichPlayer userdata 可选，打印给某玩家
