@@ -8,8 +8,9 @@ local function unit_damage()
         print(uname(us).." attck "..uname(ut).." damage = "..dmg)
         local x = cj.GetUnitX(ut)
         local y = cj.GetUnitY(ut)
-
-        TextTag(dmg, x, y, 50, 15)
+        local str = DrawGold(tostring(dmg))
+        print(str)
+        TextTag(str, x, y, 50, 15)
     end)
 end
 
