@@ -1,3 +1,4 @@
+require 'kit.common'
 require 'kit.echo'
 require 'kit.cevent'
 require 'kit.multiboard'

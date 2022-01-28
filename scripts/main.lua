@@ -2,12 +2,13 @@ cj = require "jass.common"
 cg = require "jass.globals"
 japi = require "jass.japi"
 require 'kit.kit'
+require 'event.unit_death'
+require 'event.unit_damage'
 require 'game.players'
 require 'game.game_init'
 require 'game.select_hero'
 require 'game.shuaguai'
-require 'event.unit_death'
-require 'event.unit_damage'
+require 'game.test'
 
 local std_print = print
 
@@ -25,4 +26,6 @@ function main()
 	SHUAGUAI()
 	-- 多面板
 	MULTIBOARD()
+
+	TEST()
 end
