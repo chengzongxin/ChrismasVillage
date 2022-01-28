@@ -1,0 +1,105 @@
+-- cj.CreateItem(str2id('I002:asbl'),-200,-200) -剑
+-- cj.CreateItem(str2id('I003:blba'),-200,-200) -甲
+-- cj.CreateItem(str2id('I00A:lnrn'),-200,-200) -戒
+-- cj.CreateItem(str2id('I008:engs'),-300,-300) -结晶
+
+SWORD_LIST = {str2id('I002:asbl'),str2id('I001:frgd'),str2id('I000:srbd')}
+ARMOR_LIST = {str2id('I003:blba'),str2id('I005:shhn'),str2id('I004:shdt')}
+RING_LIST = {str2id('I00A:lnrn'),str2id('I007:sprn'),str2id('I009:rnsp')}
+JIEJIN_ID = str2id('I008:engs')
+
+function synthetic_item(unit,item)
+    echo("开始合成！！！")
+    local item_id = cj.GetItemTypeId(item)
+    local isins, idxs = isintable(item_id,SWORD_LIST)
+    local isina, idxa = isintable(item_id,ARMOR_LIST)
+    local isinr, idxr = isintable(item_id,RING_LIST)
+    -- print("isintable : "..isins or "0".." idx is ： "..idxs or "0")
+    -- print("isintable : "..isina or "0".." idx is ： "..idxa or "0")
+    -- print("isintable : "..isinr or "0".." idx is ： "..idxr or "0")
+    print(isins)
+    print(isina)
+    print(isinr)
+    -- 获得了装备
+    if isins then
+        -- body
+        synthetic_sword(item,idxs)
+    elseif isina then
+        -- body
+        synthetic_armor(item,idxa)
+    elseif isinr then
+        -- body
+        synthetic_ring(item,idxr)
+    end
+end
+
+function synthetic_sword(item,idx)
+    echo("synthetic_sword"..idx)
+    if idx == 3 then
+        return
+    end
+
+    synthetic_item_need_items(idx*5,item,SWORD_LIST[idx+1])
+
+end
+
+function synthetic_armor(item,idx)
+    echo("synthetic_armor"..idx)
+    if idx == 3 then
+        return
+    end
+
+    synthetic_item_need_items(idx*5,item,ARMOR_LIST[idx+1])
+end
+
+function synthetic_ring(item,idx)
+    echo("synthetic_ring"..idx)
+    if idx == 3 then
+        return
+    end
+
+    synthetic_item_need_items(idx*5,item,RING_LIST[idx+1])
+end
+
+
+function synthetic_item_need_items(jiejinNeedcount,currentItem,nextItemID)
+    local currentCount = 0
+    -- 获取结晶数量
+    local unit = cj.GetTriggerUnit()
+    local jiejinItem = nil
+    for i = 0, 5 do
+        local it = cj.UnitItemInSlot(unit,i)
+        local it_id = cj.GetItemTypeId(it)
+        -- 获取的和背包的当前遍历的不是一个物品，并且是结晶，则叠加物品
+        if it_id == JIEJIN_ID then
+            jiejinItem = it
+        end
+    end
+
+    if jiejinItem ~= nil then
+        currentCount = cj.GetItemCharges(jiejinItem)
+    end
+
+    if currentCount < jiejinNeedcount then
+        return
+    end
+
+    -- 可以合成
+    cj.RemoveItem(currentItem)
+    cj.SetItemCharges(jiejinItem,currentCount - jiejinNeedcount)
+    local nextItem = cj.CreateItem(nextItemID,0,0)
+    cj.UnitAddItem(unit,nextItem)
+    
+    local str = DrawGold("恭喜")..DrawSkyBlue(uname(unit))..DrawGold("，合成成功！")
+    echo(str)
+end
+
+function isintable(value,tb)
+    for k,v in pairs(tb) do
+        print(value.." compare "..v)
+        if v == value then
+            return true,k
+        end
+    end
+    return false, 0    --重点：全部跑完以后，如果非true，则返回false
+end

@@ -10,6 +10,7 @@ require 'game.game_init'
 require 'game.select_hero'
 require 'game.shuaguai'
 require 'game.test'
+require 'game.synthetic_item'
 
 local std_print = print
 

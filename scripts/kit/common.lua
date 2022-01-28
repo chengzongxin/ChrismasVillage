@@ -15,4 +15,3 @@ MAX_PLAYER_QTY = 12
 PlayerGroup = {}
 -- 设置敌人奖励
 cj.SetPlayerState(ENMIMY_PLAYER, cj.PLAYER_STATE_GIVES_BOUNTY, 1)
-
