@@ -17,9 +17,8 @@ local function unit_damage()
             local binggo = math.random(10)/10.0 < crt/100.0
             if binggo then
                 dmg = dmg*crtp
-                print(dmg)
-                -- YDWESetEventDamage 会报错，需要找JAPI
-                japi.YDWESetEventDamage(dmg)
+                -- YDWESetEventDamage 会报错，需要找JAPI，一般在YDWE/jass/japi文件里找EX前缀同名API
+                japi.EXSetEventDamage(dmg)
                 local dmgStr = tostring(math.floor(dmg))
                 str = DrawGold(string.format("暴击 %s!",dmgStr))
                 echo(str)
