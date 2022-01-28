@@ -4,6 +4,7 @@ japi = require "jass.japi"
 require 'kit.kit'
 require 'event.unit_death'
 require 'event.unit_damage'
+require 'event.unit_pickup'
 require 'game.players'
 require 'game.game_init'
 require 'game.select_hero'

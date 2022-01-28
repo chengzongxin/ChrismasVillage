@@ -1,5 +1,4 @@
 local function unit_death()
-    -- 会来很多次，需要注意
     cevent.unit_death(function ()
         local du = cj.GetTriggerUnit()
         local ku = cj.GetKillingUnit()

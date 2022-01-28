@@ -9,4 +9,8 @@ end
 
 TEST = function()
     test()
+
+    for i = 1, 20 do
+        cj.CreateItem(str2id('I008:engs'),-300,-300)
+    end
 end

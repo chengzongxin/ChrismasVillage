@@ -43,6 +43,18 @@ cevent.unit_death = function(callFun)
     cj.TriggerAddAction(trg,callFun)
 end
 
+--- 单位获得物品
+---@alias onUnitdDeath
+---@param callFunc onUnitdDeath
+---@return any
+cevent.unit_pickup = function(callFun)
+    local trg = cj.CreateTrigger()
+    for i = 0, MAX_PLAYER_QTY - 1 do
+        cj.TriggerRegisterPlayerUnitEvent(trg, cj.Player(i), cj.EVENT_PLAYER_UNIT_PICKUP_ITEM, nil)
+    end
+    cj.TriggerAddAction(trg,callFun)
+end
+
 --- 单位伤害
 ---@alias onUnitdDamage
 ---@param callFunc onUnitdDamage
