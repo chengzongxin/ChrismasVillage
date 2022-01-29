@@ -8,12 +8,33 @@ ARMOR_LIST = {str2id('I003:blba'),str2id('I005:shhn'),str2id('I004:shdt')}
 RING_LIST = {str2id('I00A:lnrn'),str2id('I007:sprn'),str2id('I009:rnsp')}
 JIEJIN_ID = str2id('I008:engs')
 
-function synthetic_item(unit,item)
+-- SYNTHETIC_SWORD = {
+--     ["剑2"]	= {
+--         ["剑1"] = 1,
+--         ["剑石"] = 1,
+--         ["结晶"] = 5,
+--         },
+--     ["剑3"]	= {
+--         ["剑1"] = 1,
+--         ["剑石"] = 1,
+--         ["结晶"] = 5,
+--         },
+--     ["剑4"]	= {
+--         ["剑1"] = 1,
+--         ["剑石"] = 1,
+--         ["结晶"] = 5,
+--         },
+-- }
+
+
+
+function synthetic_item(unit,item,iteral)
     echo("开始合成！！！")
     local item_id = cj.GetItemTypeId(item)
     local isins, idxs = isintable(item_id,SWORD_LIST)
     local isina, idxa = isintable(item_id,ARMOR_LIST)
     local isinr, idxr = isintable(item_id,RING_LIST)
+    local isjiejin = item_id == JIEJIN_ID
     -- print("isintable : "..isins or "0".." idx is ： "..idxs or "0")
     -- print("isintable : "..isina or "0".." idx is ： "..idxa or "0")
     -- print("isintable : "..isinr or "0".." idx is ： "..idxr or "0")
@@ -22,14 +43,19 @@ function synthetic_item(unit,item)
     print(isinr)
     -- 获得了装备
     if isins then
-        -- body
         synthetic_sword(item,idxs)
     elseif isina then
-        -- body
         synthetic_armor(item,idxa)
     elseif isinr then
-        -- body
         synthetic_ring(item,idxr)
+    else
+        -- 迭代器,拾取到结晶后,再回调开始合成方法
+        if iteral == nil then
+            for i = 0, 5 do
+                local it = cj.UnitItemInSlot(unit,i)
+                synthetic_item(unit,it,true)
+            end
+        end
     end
 end
 
