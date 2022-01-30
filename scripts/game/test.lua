@@ -29,9 +29,9 @@ TEST = function()
     --     cj.CreateItem(str2id('I008:engs'),-300,-300)
     -- end
 
-    for index, value in ipairs(SWORD_LIST_IDS) do
-        cj.CreateItem(value,-100,-100)
-    end
+    -- for index, value in ipairs(SWORD_LIST_IDS) do
+    --     cj.CreateItem(value,-100,-100)
+    -- end
     
     -- local txt = hcolor.format("%s在%s里观摩%s，结果弄坏了，赔了%s", "ffffff", {
     --     { "80ff00", "剑圣" },

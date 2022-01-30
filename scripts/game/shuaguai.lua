@@ -38,7 +38,7 @@ local function createTimer()
     local timer = cj.CreateTimer()
     shuaguai.timer = timer
     cj.TimerStart(timer, 5, true, function ()
-        if boci >10 then
+        if boci >20 then
             cj.DestroyTimer(timer)
             cj.DestroyTimerDialog(shuaguai.dialog)
             shuaguai.timer = nil

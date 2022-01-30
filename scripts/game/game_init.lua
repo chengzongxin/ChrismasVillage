@@ -67,7 +67,7 @@ local function itemPool_init()
     cj.ItemPoolAddItemType(ip,SWORD_LIST_IDS[1],1)
     cj.ItemPoolAddItemType(ip,ARMOR_LIST_IDS[1],1)
     cj.ItemPoolAddItemType(ip,RING_LIST_IDS[1],1)
-    for index, value in ipairs(SKILL_LIST_IDS) do
+    for index, value in ipairs(SKILL_LIST_ITEM_IDS) do
         cj.ItemPoolAddItemType(ip,value,1)
     end
     ItemPool = ip
