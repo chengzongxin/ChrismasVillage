@@ -42,18 +42,27 @@ function ItemUserData:SetSystemDrop(item,flag)
     self[item] = tb
 end
 
+function ItemUserData:GetSystemDrop(item)
+    local tb = self[item]
+    if tb ~= nil then
+        return tb.systemDrop
+    end
+    return 0
+end
+
 local function unit_drop()
     cevent.unit_drop(function ()
         local u = cj.GetTriggerUnit()
         local i = cj.GetManipulatedItem()
 
         -- 唯一性判断时，调用系统方法丢弃-----wrainng  有问题，。。。。后面修复
-        if ItemUserData[i].systemDrop == 1 then
+        if ItemUserData:GetSystemDrop(i) then
             print("system drop")
             return
         end
+        ItemUserData:SetSystemDrop(i,0)
         
-        
+
         echo(DrawGold(uname(u)).." drop "..cj.GetItemName(i))
         -- 物品被销毁需要清空 0，这里暂时不处理
         -- ItemUserData[i].systemDrop = 1
