@@ -2,7 +2,6 @@
 multiboard = {}
 
 MULTIBOARD = function ()
-    echo("多面板")
     -- multiboard
     local mb = cj.CreateMultiboard()
     multiboard.mb = mb

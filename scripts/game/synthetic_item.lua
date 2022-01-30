@@ -24,7 +24,6 @@
 
 
 function synthetic_item(unit,item,iteral)
-    echo("开始合成！！！")
     local item_id = cj.GetItemTypeId(item)
     local isins, idxs = isintable(item_id,SWORD_LIST_IDS)
     local isina, idxa = isintable(item_id,ARMOR_LIST_IDS)
@@ -107,7 +106,11 @@ function synthetic_item_need_items(jiejinNeedcount,currentItem,nextItemID)
 
     -- 可以合成
     cj.RemoveItem(currentItem)
-    cj.SetItemCharges(jiejinItem,currentCount - jiejinNeedcount)
+    if currentCount == jiejinNeedcount then
+        cj.RemoveItem(jiejinItem)
+    else
+        cj.SetItemCharges(jiejinItem,currentCount - jiejinNeedcount)
+    end
     local nextItem = cj.CreateItem(nextItemID,0,0)
     cj.UnitAddItem(unit,nextItem)
     

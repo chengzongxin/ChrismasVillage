@@ -7,6 +7,9 @@ SWORD_LIST_IDS = {str2id('I002:asbl'),str2id('I001:frgd'),str2id('I000:srbd'),st
 ARMOR_LIST_IDS = {str2id('I003:blba'),str2id('I005:shhn'),str2id('I004:shdt'),str2id('I00B:shdt')}
 RING_LIST_IDS = {str2id('I00A:lnrn'),str2id('I007:sprn'),str2id('I00F:rnsp'),str2id('I009:rnsp')}
 JIEJIN_ID = str2id('I008:engs')
+-- 技能被动
+SKILL_LIST_ITEM_IDS = {str2id('I00H:phea'),str2id('I00I:phea'),str2id('I00J:phea'),str2id('I00G:phea')}
+SKILL_LIST_IDS = {str2id('A00P:AEah'),str2id('A00N:AOae'),str2id('A000:AHad'),str2id('A00Q:ACac')}
 
 local function playerGroup()
     -- 循环遍历玩家数
@@ -38,12 +41,15 @@ local function itemPool_init()
     cj.ItemPoolAddItemType(ip,SWORD_LIST_IDS[1],1)
     cj.ItemPoolAddItemType(ip,ARMOR_LIST_IDS[1],1)
     cj.ItemPoolAddItemType(ip,RING_LIST_IDS[1],1)
+    for index, value in ipairs(SKILL_LIST_IDS) do
+        cj.ItemPoolAddItemType(ip,value,1)
+    end
     ItemPool = ip
 end
 
 local function AIPool_init()
     local aip = cj.CreateUnitPool()
-    for _, value in ipairs(AI_LIST_IDS) do
+    for _, value in ipairs(SKILL_LIST_ITEM_IDS) do
         cj.UnitPoolAddUnitType(aip, value, 1)
     end
     AIPool = aip

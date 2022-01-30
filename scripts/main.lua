@@ -29,5 +29,5 @@ function main()
 	-- 多面板
 	MULTIBOARD()
 
-	-- TEST()
+	TEST()
 end

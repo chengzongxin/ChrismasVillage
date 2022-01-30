@@ -10,12 +10,17 @@ local function test()
     cj.CreateItem(str2id('I00A:lnrn'),-200,-200)
 end
 
-TEST = function()
-    test()
-
-    for i = 1, 20 do
-        cj.CreateItem(str2id('I008:engs'),-300,-300)
+local function test1()
+    for index, value in ipairs(SKILL_LIST_ITEM_IDS) do
+        cj.CreateItem(value,-100,-100)
     end
+end
+TEST = function()
+    test1()
+
+    -- for i = 1, 20 do
+    --     cj.CreateItem(str2id('I008:engs'),-300,-300)
+    -- end
 end
 
 local txt = hcolor.format("%s在%s里观摩%s，结果弄坏了，赔了%s", "ffffff", {
