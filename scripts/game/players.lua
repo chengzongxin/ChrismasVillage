@@ -1,4 +1,4 @@
--- 记录全局玩家变量
+-- 记录全局玩家变量模板
 PLAYERS = {
     [0] = {
         kill = 0,
@@ -38,6 +38,9 @@ PLAYERS.player_hero_create = function (handle)
         critical = 30,
         criticalpower = 2,
         ring = 0,
+        sword = 0,
+        armor = 0,
+        fingerring = 0,
     }
 end
 

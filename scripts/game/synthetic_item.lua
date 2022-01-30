@@ -37,10 +37,13 @@ function synthetic_item(unit,item,iteral)
     print(isinr)
     -- 获得了装备
     if isins then
+        PLAYERS.HERO(unit).sword = 1
         synthetic_sword(item,idxs)
     elseif isina then
+        PLAYERS.HERO(unit).armor = 1
         synthetic_armor(item,idxa)
     elseif isinr then
+        PLAYERS.HERO(unit).fingerring = 1
         synthetic_ring(item,idxr)
     else
         -- 迭代器,拾取到结晶后,再回调开始合成方法
@@ -54,7 +57,6 @@ function synthetic_item(unit,item,iteral)
 end
 
 function synthetic_sword(item,idx)
-    echo("synthetic_sword"..idx)
     if idx == 4 then
         return
     end
@@ -64,7 +66,6 @@ function synthetic_sword(item,idx)
 end
 
 function synthetic_armor(item,idx)
-    echo("synthetic_armor"..idx)
     if idx == 4 then
         return
     end
@@ -73,7 +74,6 @@ function synthetic_armor(item,idx)
 end
 
 function synthetic_ring(item,idx)
-    echo("synthetic_ring"..idx)
     if idx == 4 then
         return
     end

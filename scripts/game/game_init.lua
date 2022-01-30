@@ -60,7 +60,7 @@ local function playerGroup()
     end
 end
 
-
+-- 物品池掉落结晶、装备、被动技能
 local function itemPool_init()
     local ip = cj.CreateItemPool()
     cj.ItemPoolAddItemType(ip,JIEJIN_ID,20)
@@ -75,7 +75,7 @@ end
 
 local function AIPool_init()
     local aip = cj.CreateUnitPool()
-    for _, value in ipairs(SKILL_LIST_ITEM_IDS) do
+    for _, value in ipairs(AI_LIST_IDS) do
         cj.UnitPoolAddUnitType(aip, value, 1)
     end
     AIPool = aip

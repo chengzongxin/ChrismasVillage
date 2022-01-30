@@ -16,7 +16,7 @@ local function test1()
     end
 end
 TEST = function()
-    test1()
+    -- test1()
 
     -- 遍历slk物编数据
     -- for k, v in pairs(slk.ability) do
@@ -28,13 +28,17 @@ TEST = function()
     -- for i = 1, 20 do
     --     cj.CreateItem(str2id('I008:engs'),-300,-300)
     -- end
+
+    for index, value in ipairs(SWORD_LIST_IDS) do
+        cj.CreateItem(value,-100,-100)
+    end
+    
+    -- local txt = hcolor.format("%s在%s里观摩%s，结果弄坏了，赔了%s", "ffffff", {
+    --     { "80ff00", "剑圣" },
+    --     { "ff59ff", "武器屋" },
+    --     { "ff0000", "[圣剑·火之高兴]" },
+    --     { "ffaa88", "100W" },
+    -- })
+
+    -- echo(txt)
 end
-
-local txt = hcolor.format("%s在%s里观摩%s，结果弄坏了，赔了%s", "ffffff", {
-        { "80ff00", "剑圣" },
-        { "ff59ff", "武器屋" },
-        { "ff0000", "[圣剑·火之高兴]" },
-        { "ffaa88", "100W" },
-    })
-
-echo(txt)
