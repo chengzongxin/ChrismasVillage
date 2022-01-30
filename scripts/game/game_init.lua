@@ -8,8 +8,34 @@ ARMOR_LIST_IDS = {str2id('I003:blba'),str2id('I005:shhn'),str2id('I004:shdt'),st
 RING_LIST_IDS = {str2id('I00A:lnrn'),str2id('I007:sprn'),str2id('I00F:rnsp'),str2id('I009:rnsp')}
 JIEJIN_ID = str2id('I008:engs')
 -- 技能被动
-SKILL_LIST_ITEM_IDS = {str2id('I00H:phea'),str2id('I00I:phea'),str2id('I00J:phea'),str2id('I00G:phea')}
-SKILL_LIST_IDS = {str2id('A00P:AEah'),str2id('A00N:AOae'),str2id('A000:AHad'),str2id('A00Q:ACac')}
+SKILL_LIST_ITEM_IDS = {
+    str2id('I00H:phea'), -- 荆棘
+    str2id('I00J:phea'), -- 耐久
+    str2id('I00G:phea'), -- 专注
+    str2id('I00I:phea'), -- 命令
+    }
+SKILL_LIST_IDS = {
+    str2id('A00P:AEah'), -- 荆棘
+    str2id('A00N:AOae'), -- 耐久
+    str2id('A00O:AHad'), -- 专注
+    str2id('A00Q:ACac'), -- 命令
+    }
+
+SKILL_LIST_IDS_MAP = {}
+
+local function SKILL_LIST_IDS_MAP_init()
+    if #SKILL_LIST_ITEM_IDS ~= #SKILL_LIST_IDS then
+        echo("技能物品和技能数目不一致！！！！！！！！！！！！！！！")
+    end
+    for i = 1, #SKILL_LIST_ITEM_IDS do
+        SKILL_LIST_IDS_MAP[SKILL_LIST_ITEM_IDS[i]] = SKILL_LIST_IDS[i]
+    end
+
+    -- for key, value in pairs(SKILL_LIST_IDS_MAP) do
+    --     echo(key..value)
+    -- end
+end
+
 
 local function playerGroup()
     -- 循环遍历玩家数
@@ -59,3 +85,4 @@ end
 playerGroup()
 itemPool_init()
 AIPool_init()
+SKILL_LIST_IDS_MAP_init()

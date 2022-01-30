@@ -21,7 +21,8 @@ PLAYERS.player_create = function (handle)
     PLAYERS[handle] = {
             index = cj.GetPlayerController(handle),
             name = cj.GetPlayerName(handle) or '',
-            kill = 0
+            kill = 0,
+            ring = 0,
         }
 end
 
@@ -35,7 +36,8 @@ PLAYERS.player_hero_create = function (handle)
         mp = 0,
         name = cj.GetUnitName(handle),
         critical = 30,
-        criticalpower = 2
+        criticalpower = 2,
+        ring = 0,
     }
 end
 

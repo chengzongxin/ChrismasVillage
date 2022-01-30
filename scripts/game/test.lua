@@ -18,6 +18,13 @@ end
 TEST = function()
     test1()
 
+    -- 遍历slk物编数据
+    -- for k, v in pairs(slk.ability) do
+	-- 	print(k, v)
+	-- end
+	-- for k, v in pairs(slk.ability.AHbz) do
+	-- 	print(k, v)
+	-- end
     -- for i = 1, 20 do
     --     cj.CreateItem(str2id('I008:engs'),-300,-300)
     -- end

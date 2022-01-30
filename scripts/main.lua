@@ -1,13 +1,16 @@
 cj = require "jass.common"
 cg = require "jass.globals"
+slk = require 'jass.slk'
 japi = require "jass.japi"
 require 'kit.kit'
 require 'event.unit_death'
 require 'event.unit_damage'
 require 'event.unit_pickup'
+require 'event.unit_use'
 require 'game.players'
 require 'game.game_init'
 require 'game.select_hero'
+require 'game.lerning_skill'
 require 'game.shuaguai'
 require 'game.test'
 require 'game.synthetic_item'

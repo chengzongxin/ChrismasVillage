@@ -6,6 +6,14 @@ DamageEventQueue = {}
 DamageEventFuncQueue = {}
 DamageEventNumber = 0
 
+local function registerAllPlayerUnitEvent(event,callFun)
+    local trg = cj.CreateTrigger()
+    for i = 0, MAX_PLAYER_QTY - 1 do
+        cj.TriggerRegisterPlayerUnitEvent(trg, cj.Player(i), event, nil)
+    end
+    cj.TriggerAddAction(trg,callFun)
+end
+
 --- 开始释放技能 （施法） cevent.spell_effect(whichUnit,function () --body ... end)
 ---@alias onSpellCast
 ---@param whichUnit userdata
@@ -36,23 +44,23 @@ end
 ---@param callFunc onUnitdDeath
 ---@return any
 cevent.unit_death = function(callFun)
-    local trg = cj.CreateTrigger()
-    for i = 0, MAX_PLAYER_QTY - 1 do
-        cj.TriggerRegisterPlayerUnitEvent(trg, cj.Player(i), cj.EVENT_PLAYER_UNIT_DEATH, nil)
-    end
-    cj.TriggerAddAction(trg,callFun)
+    registerAllPlayerUnitEvent(cj.EVENT_PLAYER_UNIT_DEATH,callFun)
 end
 
 --- 单位获得物品
----@alias onUnitdDeath
----@param callFunc onUnitdDeath
+---@alias onUnitdPickup
+---@param callFunc onUnitdPickup
 ---@return any
 cevent.unit_pickup = function(callFun)
-    local trg = cj.CreateTrigger()
-    for i = 0, MAX_PLAYER_QTY - 1 do
-        cj.TriggerRegisterPlayerUnitEvent(trg, cj.Player(i), cj.EVENT_PLAYER_UNIT_PICKUP_ITEM, nil)
-    end
-    cj.TriggerAddAction(trg,callFun)
+    registerAllPlayerUnitEvent(cj.EVENT_PLAYER_UNIT_PICKUP_ITEM,callFun)
+end
+
+--- 单位使用物品
+---@alias onUnitUse
+---@param callFunc onUnitUse
+---@return any
+cevent.unit_use = function(callFun)
+    registerAllPlayerUnitEvent(cj.EVENT_PLAYER_UNIT_USE_ITEM,callFun)
 end
 
 --- 单位伤害
