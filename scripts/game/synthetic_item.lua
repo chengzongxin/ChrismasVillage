@@ -56,7 +56,7 @@ end
 
 function synthetic_sword(item,idx)
     echo("synthetic_sword"..idx)
-    if idx == 3 then
+    if idx == 4 then
         return
     end
 
@@ -66,7 +66,7 @@ end
 
 function synthetic_armor(item,idx)
     echo("synthetic_armor"..idx)
-    if idx == 3 then
+    if idx == 4 then
         return
     end
 
@@ -75,7 +75,7 @@ end
 
 function synthetic_ring(item,idx)
     echo("synthetic_ring"..idx)
-    if idx == 3 then
+    if idx == 4 then
         return
     end
 

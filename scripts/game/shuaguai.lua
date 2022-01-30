@@ -13,7 +13,7 @@ end
 
 -- 计时器事件
 local function timerEvent()
-    for i=1,#regions do
+    for i=5,#regions do
         local r = regions[i]
         local x = cj.GetRectCenterX(r)
         local y = cj.GetRectCenterY(r)
