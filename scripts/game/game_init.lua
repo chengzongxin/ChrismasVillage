@@ -1,5 +1,8 @@
 ItemPool = nil
-
+AIPool = nil
+-- 刷怪单位ID
+AI_LIST_IDS = {str2id('n000:nsca'),str2id('u000:uske'),str2id('u001:uskm')}
+-- 物品ID
 SWORD_LIST_IDS = {str2id('I002:asbl'),str2id('I001:frgd'),str2id('I000:srbd'),str2id('I00C:srbd')}
 ARMOR_LIST_IDS = {str2id('I003:blba'),str2id('I005:shhn'),str2id('I004:shdt'),str2id('I00B:shdt')}
 RING_LIST_IDS = {str2id('I00A:lnrn'),str2id('I007:sprn'),str2id('I00F:rnsp'),str2id('I009:rnsp')}
@@ -38,5 +41,15 @@ local function itemPool_init()
     ItemPool = ip
 end
 
+local function AIPool_init()
+    local aip = cj.CreateUnitPool()
+    for _, value in ipairs(AI_LIST_IDS) do
+        cj.UnitPoolAddUnitType(aip, value, 1)
+    end
+    AIPool = aip
+end
+
+
 playerGroup()
 itemPool_init()
+AIPool_init()
