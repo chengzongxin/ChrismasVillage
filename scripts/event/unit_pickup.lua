@@ -5,17 +5,25 @@ local function unique_item_judge(unit,item)
     local isina = isintable(item_id,ARMOR_LIST_IDS)
     local isinr = isintable(item_id,RING_LIST_IDS)
 
+    print("========================")
+    print(item)
     if isins and PLAYERS.HERO(unit).sword == 1 then
+        -- ItemUserData[item].systemDrop = 1
+        ItemUserData:SetSystemDrop(item,1)
         cj.SetItemPosition(item,cj.GetUnitX(unit),cj.GetUnitY(unit))
         return true
     end
 
     if isina and PLAYERS.HERO(unit).armor == 1 then
+        -- ItemUserData[item].systemDrop = 1
+        ItemUserData:SetSystemDrop(item,1)
         cj.SetItemPosition(item,cj.GetUnitX(unit),cj.GetUnitY(unit))
         return true
     end
 
     if isinr and PLAYERS.HERO(unit).fingerring == 1 then
+        -- ItemUserData[item].systemDrop = 1
+        ItemUserData:SetSystemDrop(item,1)
         cj.SetItemPosition(item,cj.GetUnitX(unit),cj.GetUnitY(unit))
         return true
     end
@@ -47,6 +55,8 @@ local function unit_pickup()
                 if  it ~= item and it_id == JIEJIN_ID then
                     cj.SetItemCharges(it,cj.GetItemCharges(it)+1)
                     cj.RemoveItem(item)
+                    ItemUserData[item].systemDrop = 0
+                    ItemUserData[item] = nil
                     item = it
                 end
             end

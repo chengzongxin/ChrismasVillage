@@ -63,6 +63,13 @@ cevent.unit_use = function(callFun)
     registerAllPlayerUnitEvent(cj.EVENT_PLAYER_UNIT_USE_ITEM,callFun)
 end
 
+--- 单位丢弃物品
+---@alias onUnitDrop
+---@param callFunc onUnitDrop
+---@return any
+cevent.unit_drop = function(callFun)
+    registerAllPlayerUnitEvent(cj.EVENT_PLAYER_UNIT_DROP_ITEM,callFun)
+end
 --- 单位伤害
 ---@alias onUnitdDamage
 ---@param callFunc onUnitdDamage
