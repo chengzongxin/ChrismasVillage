@@ -10,7 +10,10 @@ local function unit_death()
             -- 引用掉落池,50%几率
             if math.random(100) > 50 then
                 local item = cj.PlaceRandomItem(ItemPool,cj.GetUnitX(du),cj.GetUnitY(du))
-                cj.UnitAddItem(ku,item)
+                if cj.GetItemTypeId(item) == JIEJIN_ID then
+                    -- 结晶自动捡取
+                    cj.UnitAddItem(ku,item)
+                end
             end
         elseif cj.IsUnitAlly(du, HOST_PLAYER) then
             -- 复活英雄
