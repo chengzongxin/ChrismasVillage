@@ -6,23 +6,23 @@ local function unique_item_judge(unit,item)
     local isinr = isintable(item_id,RING_LIST_IDS)
 
     print("========================")
-    print(item)
+    print(item_id)
     if isins and PLAYERS.HERO(unit).sword == 1 then
-        -- ItemUserData[item].systemDrop = 1
+        
         ItemUserData:SetSystemDrop(item,1)
         cj.SetItemPosition(item,cj.GetUnitX(unit),cj.GetUnitY(unit))
         return true
     end
 
     if isina and PLAYERS.HERO(unit).armor == 1 then
-        -- ItemUserData[item].systemDrop = 1
+        
         ItemUserData:SetSystemDrop(item,1)
         cj.SetItemPosition(item,cj.GetUnitX(unit),cj.GetUnitY(unit))
         return true
     end
 
     if isinr and PLAYERS.HERO(unit).fingerring == 1 then
-        -- ItemUserData[item].systemDrop = 1
+        
         ItemUserData:SetSystemDrop(item,1)
         cj.SetItemPosition(item,cj.GetUnitX(unit),cj.GetUnitY(unit))
         return true
@@ -37,9 +37,10 @@ local function unit_pickup()
         local unit = cj.GetTriggerUnit()
         local item = cj.GetManipulatedItem()
 
-        echo(DrawGold(uname(unit)).." pick up "..cj.GetItemName(item))
+        print(DrawGold(uname(unit)).." pick up "..cj.GetItemName(item))
         -- 唯一性判断
         if unique_item_judge(unit,item) then
+            -- 系统丢弃，设置标记，以免引起丢弃物品回调
             return
         end
 
@@ -55,8 +56,6 @@ local function unit_pickup()
                 if  it ~= item and it_id == JIEJIN_ID then
                     cj.SetItemCharges(it,cj.GetItemCharges(it)+1)
                     cj.RemoveItem(item)
-                    ItemUserData[item].systemDrop = 0
-                    ItemUserData[item] = nil
                     item = it
                 end
             end
