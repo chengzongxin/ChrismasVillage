@@ -3,11 +3,6 @@
 -- cj.CreateItem(str2id('I00A:lnrn'),-200,-200) -戒
 -- cj.CreateItem(str2id('I008:engs'),-300,-300) -结晶
 
-SWORD_LIST = {str2id('I002:asbl'),str2id('I001:frgd'),str2id('I000:srbd')}
-ARMOR_LIST = {str2id('I003:blba'),str2id('I005:shhn'),str2id('I004:shdt')}
-RING_LIST = {str2id('I00A:lnrn'),str2id('I007:sprn'),str2id('I009:rnsp')}
-JIEJIN_ID = str2id('I008:engs')
-
 -- SYNTHETIC_SWORD = {
 --     ["剑2"]	= {
 --         ["剑1"] = 1,
@@ -31,9 +26,9 @@ JIEJIN_ID = str2id('I008:engs')
 function synthetic_item(unit,item,iteral)
     echo("开始合成！！！")
     local item_id = cj.GetItemTypeId(item)
-    local isins, idxs = isintable(item_id,SWORD_LIST)
-    local isina, idxa = isintable(item_id,ARMOR_LIST)
-    local isinr, idxr = isintable(item_id,RING_LIST)
+    local isins, idxs = isintable(item_id,SWORD_LIST_IDS)
+    local isina, idxa = isintable(item_id,ARMOR_LIST_IDS)
+    local isinr, idxr = isintable(item_id,RING_LIST_IDS)
     local isjiejin = item_id == JIEJIN_ID
     -- print("isintable : "..isins or "0".." idx is ： "..idxs or "0")
     -- print("isintable : "..isina or "0".." idx is ： "..idxa or "0")
@@ -65,7 +60,7 @@ function synthetic_sword(item,idx)
         return
     end
 
-    synthetic_item_need_items(idx*5,item,SWORD_LIST[idx+1])
+    synthetic_item_need_items(idx*5,item,SWORD_LIST_IDS[idx+1])
 
 end
 
@@ -75,7 +70,7 @@ function synthetic_armor(item,idx)
         return
     end
 
-    synthetic_item_need_items(idx*5,item,ARMOR_LIST[idx+1])
+    synthetic_item_need_items(idx*5,item,ARMOR_LIST_IDS[idx+1])
 end
 
 function synthetic_ring(item,idx)
@@ -84,7 +79,7 @@ function synthetic_ring(item,idx)
         return
     end
 
-    synthetic_item_need_items(idx*5,item,RING_LIST[idx+1])
+    synthetic_item_need_items(idx*5,item,RING_LIST_IDS[idx+1])
 end
 
 

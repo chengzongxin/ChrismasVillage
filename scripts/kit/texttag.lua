@@ -13,7 +13,7 @@ function TextTag(text,x,y,height,size)
         cj.SetTextTagText(t,text,TextTagSize(size+10-times))
         -- 1秒后销毁
         times = times + 1
-        if times > 11 then
+        if times > 33 then
             cj.DestroyTimer(timer)
             cj.DestroyTextTag(t)
         end

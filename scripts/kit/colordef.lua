@@ -23,6 +23,117 @@
 --     |CFFFF0000|R
 -- }
 
+--[[
+    ATTRSTR({
+        { "80ff00", "剑圣" },
+        { "ff59ff", "武器屋" },
+        { "ff0000", "[圣剑·火之高兴]" },
+        { hcolor.gold, "100W" },
+    })
+]]
+---@class hcolor
+hcolor = {}
+
+---@private
+---@param str string
+---@param color string hex
+---@return string
+hcolor.hex = function(str, color)
+    if (str == nil or str == '' or color == nil) then
+        return str
+    end
+    return "|cff" .. color .. str .. "|r"
+end
+
+
+--- 找出某个子串出现的所有位置
+---@param str string
+---@param pattern string
+---@return table
+string.findAllPos = function(str, pattern)
+    if (str == nil or pattern == nil) then
+        return
+    end
+    local s
+    local e = 0
+    local res = {}
+    while (true) do
+        s, e = string.find(str, pattern, e + 1)
+        if (s == nil) then
+            break
+        end
+        table.insert(res, { s, e })
+        if (e == nil) then
+            break
+        end
+    end
+    return res
+end
+
+--- 把数组以分隔符拼接回字符串
+---@param delimeter string
+---@param table table
+---@return string
+string.implode = function(delimeter, table)
+    local str
+    for _, v in ipairs(table) do
+        if (str == nil) then
+            str = v
+        else
+            str = str .. delimeter .. v
+        end
+    end
+    return str
+end
+
+--- 插入组合
+--[[
+    str: 一个字符串，数值%s,%s,%s
+    containColor: 总体hex颜色，包住字符串两端 string|nil|function
+    options: {
+        {"00ccff", "100"}, -- 按顺序替换
+        {"ee82ee", "200"},
+        {hcolor.purple, "300"}, -- 可使用函数进行颜色设定，自定义函数也可以只要返回string类型即可
+    }
+]]
+---@type fun(str:string,containColor:nil|string|function,options:table):string
+hcolor.format = function(str, containColor, options)
+    local poses = string.findAllPos(str, '%%s')
+    local builder = {}
+    if (#poses > 0) then
+        local idx = 1
+        local cursor = 1
+        for _, p in ipairs(poses) do
+            if (p[1] > 1) then
+                if (type(containColor) == "string") then
+                    table.insert(builder, hcolor.hex(string.sub(str, cursor, p[1] - 1), containColor))
+                elseif (type(containColor) == "function") then
+                    table.insert(builder, containColor(string.sub(str, cursor, p[1] - 1)))
+                else
+                    table.insert(builder, string.sub(str, cursor, p[1] - 1), containColor)
+                end
+            end
+            if (options ~= nil and options[idx] ~= nil) then
+                if (type(options[idx][1]) == "string") then
+                    table.insert(builder, hcolor.hex(tostring(options[idx][2]), options[idx][1]))
+                elseif (type(options[idx][1]) == "function") then
+                    table.insert(builder, options[idx][1](tostring(options[idx][2])))
+                end
+            end
+            cursor = p[2] + 1
+            idx = idx + 1
+        end
+        if (type(containColor) == "string") then
+            table.insert(builder, hcolor.hex(string.sub(str, cursor), containColor))
+        elseif (type(containColor) == "function") then
+            table.insert(builder, containColor(string.sub(str, cursor)))
+        else
+            table.insert(builder, string.sub(str, cursor))
+        end
+    end
+    return string.implode('', builder)
+end
+
 DrawRed = function(text)
     return string.format( "|CFFFF0000%s|R", text)
 end

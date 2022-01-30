@@ -7,6 +7,9 @@ local function unit_death()
         if cj.IsUnitEnemy(du, HOST_PLAYER) then
             -- 计分
             PLAYERS[p].kill = PLAYERS[p].kill + 1 
+            -- 引用掉落池
+            local item = cj.PlaceRandomItem(ItemPool,cj.GetUnitX(du),cj.GetUnitY(du))
+            uname()
         elseif cj.IsUnitAlly(du, HOST_PLAYER) then
             -- 复活英雄
             local td = nil

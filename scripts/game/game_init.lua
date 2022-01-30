@@ -1,3 +1,10 @@
+ItemPool = nil
+
+SWORD_LIST_IDS = {str2id('I002:asbl'),str2id('I001:frgd'),str2id('I000:srbd')}
+ARMOR_LIST_IDS = {str2id('I003:blba'),str2id('I005:shhn'),str2id('I004:shdt')}
+RING_LIST_IDS = {str2id('I00A:lnrn'),str2id('I007:sprn'),str2id('I009:rnsp')}
+JIEJIN_ID = str2id('I008:engs')
+
 local function playerGroup()
     -- 循环遍历玩家数
     local players = {}
@@ -21,4 +28,15 @@ local function playerGroup()
     end
 end
 
+
+local function itemPool_init()
+    local ip = cj.CreateItemPool()
+    cj.ItemPoolAddItemType(ip,JIEJIN_ID,20)
+    cj.ItemPoolAddItemType(ip,SWORD_LIST_IDS[1],1)
+    cj.ItemPoolAddItemType(ip,ARMOR_LIST_IDS[1],1)
+    cj.ItemPoolAddItemType(ip,RING_LIST_IDS[1],1)
+    ItemPool = ip
+end
+
 playerGroup()
+itemPool_init()

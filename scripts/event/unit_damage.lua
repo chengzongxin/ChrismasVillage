@@ -21,7 +21,6 @@ local function unit_damage()
                 japi.EXSetEventDamage(dmg)
                 local dmgStr = tostring(math.floor(dmg))
                 str = DrawGold(string.format("暴击 %s!",dmgStr))
-                echo(str)
             else
                 str = DrawPink(tostring(math.floor(dmg)))
             end

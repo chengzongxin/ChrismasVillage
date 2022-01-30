@@ -95,3 +95,7 @@ end
 function uname(unit)
     return cj.GetUnitName(unit)
 end
+
+function iname(item)
+    return cj.GetItemName(item)
+end
