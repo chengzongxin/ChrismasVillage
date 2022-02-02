@@ -1,6 +1,7 @@
 -- 记录全局玩家变量模板
 PLAYERS = {
     [0] = {
+        id = 0,
         kill = 0,
         name = '',
         hero = {
@@ -19,6 +20,7 @@ PLAYERS = {
 PLAYERS.player_create = function (handle)
     -- init Player map
     PLAYERS[handle] = {
+            id = handle,
             index = cj.GetPlayerController(handle),
             name = cj.GetPlayerName(handle) or '',
             kill = 0,
@@ -50,4 +52,10 @@ end
 PLAYERS.HERO = function (unit)
     local player = cj.GetOwningPlayer(unit)
     return PLAYERS[player].hero
+end
+
+---根据单位获取存储玩家
+function PLAYERS:GetPlayer(u)
+	local player = cj.GetOwningPlayer(u)
+    return self[player]
 end

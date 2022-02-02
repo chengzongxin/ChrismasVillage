@@ -1,5 +1,9 @@
+-- 爆率物品池
 ItemPool = nil
+-- 刷怪AI池
 AIPool = nil
+-- 抽奖物品池
+LotteryPool = nil
 -- 刷怪单位ID
 AI_LIST_IDS = {str2id('n000:nsca'),str2id('u000:uske'),str2id('u001:uskm')}
 -- 物品ID
@@ -72,7 +76,7 @@ local function itemPool_init()
     end
     ItemPool = ip
 end
-
+-- 刷怪池
 local function AIPool_init()
     local aip = cj.CreateUnitPool()
     for _, value in ipairs(AI_LIST_IDS) do
@@ -80,9 +84,16 @@ local function AIPool_init()
     end
     AIPool = aip
 end
+-- 抽奖池
+local function lottery_pool_init()
+    local lp = cj.CreateItemPool()
+    cj.ItemPoolAddItemType(lp,JIEJIN_ID,20)
+    LotteryPool = lp
+end
 
 
 playerGroup()
 itemPool_init()
 AIPool_init()
 SKILL_LIST_IDS_MAP_init()
+lottery_pool_init()
