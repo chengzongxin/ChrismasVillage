@@ -63,6 +63,13 @@ cevent.unit_use = function(callFun)
     registerAllPlayerUnitEvent(cj.EVENT_PLAYER_UNIT_USE_ITEM,callFun)
 end
 
+--- 单位卖出物品 注意贩卖单位需要设为中立被动，如果在同一阵营，会导致GetBuyingUnit获取不到unit
+---@alias onUnitSell
+---@param callFunc onUnitSell
+---@return any
+cevent.unit_sell = function(callFun)
+    registerAllPlayerUnitEvent(cj.EVENT_PLAYER_UNIT_SELL,callFun)
+end
 --- 单位丢弃物品
 ---@alias onUnitDrop
 ---@param callFunc onUnitDrop

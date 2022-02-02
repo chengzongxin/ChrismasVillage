@@ -10,7 +10,7 @@ HOST_PLAYER = cj.Player(0)
 -- 敌人玩家
 ENMIMY_PLAYER = cj.Player(4)
 -- 最大玩家数
-MAX_PLAYER_QTY = 12
+MAX_PLAYER_QTY = 16
 -- 玩家組
 PlayerGroup = {}
 -- 设置敌人奖励

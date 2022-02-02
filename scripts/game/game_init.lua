@@ -40,7 +40,7 @@ end
 local function playerGroup()
     -- 循环遍历玩家数
     local players = {}
-    for i = 0, MAX_PLAYER_QTY do
+    for i = 0, MAX_PLAYER_QTY - 1 do
         local p = cj.Player(i)
         -- 玩家的控制者是用户，并且游戏状态是正在游戏
         if cj.GetPlayerController(p) == cj.MAP_CONTROL_USER and cj.GetPlayerSlotState(p) == cj.PLAYER_SLOT_STATE_PLAYING then
