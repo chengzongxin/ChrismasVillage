@@ -40,6 +40,11 @@ local function SKILL_LIST_IDS_MAP_init()
     -- end
 end
 
+-- 设置初始黄金
+local function addPlayerInitGold(p,delta)
+    -- SetPlayerState(whichPlayer, whichPlayerState, GetPlayerState(whichPlayer, whichPlayerState) + delta)
+    cj.SetPlayerState(p, cj.PLAYER_STATE_RESOURCE_GOLD, cj.GetPlayerState(p, cj.PLAYER_STATE_RESOURCE_GOLD) + delta)
+end
 
 local function playerGroup()
     -- 循环遍历玩家数
@@ -52,6 +57,9 @@ local function playerGroup()
             table.insert(PlayerGroup, p)
             -- 全局初始化
             PLAYERS.player_create(p)
+
+            addPlayerInitGold(p,200)
+
             print("PLAYERS["..p.."].name : "..PLAYERS[p].name)
             print("PLAYERS["..p.."].kill : "..PLAYERS[p].kill)
         end
