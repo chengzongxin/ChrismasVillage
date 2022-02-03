@@ -99,3 +99,21 @@ end
 function iname(item)
     return cj.GetItemName(item)
 end
+
+-- 创建计时器
+---@param timeout 时间间隔
+---@param times 运行次数
+---@param handlerFunc 回调函数 
+function Timer_times(timeout,times,handlerFunc)
+    -- native TimerStart           takes timer whichTimer, real timeout, boolean periodic, code handlerFunc returns nothing
+    local timer = cj.CreateTimer()
+    local runTimes = 0
+    cj.TimerStart(timer, timeout, true, function ()
+        if runTimes == times then
+            cj.DestroyTimer(timer)
+            timer = nil
+        end
+        handlerFunc()
+        runTimes = runTimes + 1
+    end)
+end
