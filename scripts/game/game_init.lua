@@ -1,3 +1,5 @@
+-- 游戏难度
+GameDifficulty = 1
 -- 爆率物品池
 ItemPool = nil
 -- 刷怪AI池
@@ -36,6 +38,10 @@ local function SKILL_LIST_IDS_MAP_init()
     end
 end
 
+local function game_setting()
+	cj.FogEnable(false)
+	cj.FogMaskEnable(false)
+end
 
 local function playerGroup_init()
     PlayerGroup = Players.new()
@@ -89,6 +95,7 @@ end
 
 
 function GAME_INIT()
+    game_setting()
     playerGroup_init()
     itemPool_init()
     AIPool_init()

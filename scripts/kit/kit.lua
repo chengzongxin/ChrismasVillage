@@ -4,6 +4,7 @@ require 'kit.cevent'
 require 'kit.multiboard'
 require 'kit.texttag'
 require 'kit.colordef'
+require 'kit.dialog'
 -- bj = require "blizzard"
 -- 物编转id
 function str2id(a)
