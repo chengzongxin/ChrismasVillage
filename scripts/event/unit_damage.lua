@@ -26,6 +26,18 @@ local function unit_damage()
             end
         end
 
+        local yadianna = Unit.new(ut)
+        -- for key, value in pairs(yadianna) do
+        --     print(key,value)
+        -- end
+        -- print(yadianna.name)
+        
+        if yadianna.name == "守护雅典娜" then
+            local percent = string.format( "%.0f", yadianna:hp() / yadianna:maxhp() * 100)
+            local warningStr = "|cffc0c0c0*** |r|cffff0000圣|r|cffff1c00诞|r|cffff3800树|r|cffff5500正|r|cffff7100在|r|cffff8d00遭|r|cffffaa00受|r|cffffc600攻|r|cffffe200击|r|cffffff00！|r|cffc0c0c0当前|r|cff00ff00生命值|r|cffc0c0c0为|r|cffffff00 "..percent.."|r|cffc0c0c0 % ***|r"
+            echo(warningStr)
+        end
+
         TextTag(str, x, y, 50, 15)
     end)
 end
