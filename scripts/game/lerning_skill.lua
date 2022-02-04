@@ -11,7 +11,7 @@ Lerning_skill = function (unit,skillId)
     if suc then
         hero.ring = skillId -- 记录技能
         
-        local skillName = slk.ability[skillId].Name or ""
+        local skillName = JassSlk.ability[skillId].Name or ""
         
         local txt = hcolor.format("%s 学习了技能: %s", "ffffff", {
             { "80ff00", uname(unit) },

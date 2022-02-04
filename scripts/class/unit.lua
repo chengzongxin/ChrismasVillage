@@ -15,18 +15,18 @@ Unit.new = function (handle)
 end
 
 function Unit:hp()
-    return cj.GetUnitState(self.handle,cj.UNIT_STATE_LIFE)
+    return cj.GetUnitState(self.handle,UNIT_STATE_LIFE)
 end
 
 function Unit:maxhp()
-    return cj.GetUnitState(self.handle,cj.UNIT_STATE_MAX_LIFE)
+    return cj.GetUnitState(self.handle,UNIT_STATE_MAX_LIFE)
 end
 
 function Unit:mp()
-    return cj.GetUnitState(self.handle,cj.UNIT_STATE_MANA)
+    return cj.GetUnitState(self.handle,UNIT_STATE_MANA)
 end
 
 function Unit:maxmp()
-    return cj.GetUnitState(self.handle,cj.UNIT_STATE_MAX_MANA)
+    return cj.GetUnitState(self.handle,UNIT_STATE_MAX_MANA)
 end
 

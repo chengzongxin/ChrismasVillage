@@ -1,7 +1,5 @@
-cj = require "jass.common"
-cg = require "jass.globals"
-slk = require 'jass.slk'
-japi = require "jass.japi"
+require 'base.engine'
+require 'base.blizzard'
 require 'kit.kit'
 require 'class.players'
 require 'class.unit'

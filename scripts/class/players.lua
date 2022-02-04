@@ -124,7 +124,7 @@ end
 
 -- 玩家添加金币
 function Player:addGold(gold)
-    cj.SetPlayerState(self.handle, cj.PLAYER_STATE_RESOURCE_GOLD, cj.GetPlayerState(p, cj.PLAYER_STATE_RESOURCE_GOLD) + gold)
+    cj.SetPlayerState(self.handle, PLAYER_STATE_RESOURCE_GOLD, cj.GetPlayerState(self.handle, PLAYER_STATE_RESOURCE_GOLD) + gold)
 end
 
 function Player:selectUnit(whichUnit)

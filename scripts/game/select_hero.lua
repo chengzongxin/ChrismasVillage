@@ -1,12 +1,16 @@
 
 local function create_select_unit()
     echo("|cffff0000请|r|cffdb2400选|r|cffb74800择|r|cff926d00你|r|cff6e9100的|r|cff49b600英|r|cff25da00雄|r|cff00ff00！|r",nil,30,0,0)
+    for key, value in pairs(PlayerGroup:playerList()) do
+        print("PlayerGroup",key,value)
+    end
     for _, player in pairs(PlayerGroup:playerList()) do
         -- 创建小精灵
         local id = str2id('e000.ewsp')
         local x = -300
         local y = 0
         local u = cj.CreateUnit(player.handle, id, x, y, 0)
+        print(u,player,"hhhhhh")
         -- 平移镜头
         cj.PanCameraToTimed(cj.GetUnitX(u), cj.GetUnitY(u), 0)
         player:selectUnit(u)

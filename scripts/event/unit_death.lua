@@ -26,7 +26,7 @@ local function unit_death()
         elseif cj.IsUnitEnemy(du, HOST_PLAYER) then
             -- 基地被摧毁，任务失败
             -- CustomDefeatBJ bj 函数
-            cj.RemovePlayer(p , cj.PLAYER_GAME_RESULT_DEFEAT)
+            cj.RemovePlayer(HOST_PLAYER , PLAYER_GAME_RESULT_DEFEAT)
         end
         
     end)

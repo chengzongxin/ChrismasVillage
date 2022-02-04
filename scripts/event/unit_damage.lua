@@ -18,7 +18,7 @@ local function unit_damage()
             if binggo then
                 dmg = dmg*crtp
                 -- YDWESetEventDamage 会报错，需要找JAPI，一般在YDWE/jass/japi文件里找EX前缀同名API
-                japi.EXSetEventDamage(dmg)
+                JassJapi.EXSetEventDamage(dmg)
                 local dmgStr = tostring(math.floor(dmg))
                 str = DrawGold(string.format("暴击 %s!",dmgStr))
             else

@@ -22,7 +22,7 @@ end
 cevent.spell_cast = function(whichUnit,callFun)
     local trg = cj.CreateTrigger()
     local p = cj.GetOwningPlayer(whichUnit)
-    cj.TriggerRegisterUnitEvent(trg, whichUnit, cj.EVENT_UNIT_SPELL_CAST)
+    cj.TriggerRegisterUnitEvent(trg, whichUnit, EVENT_UNIT_SPELL_CAST)
     cj.TriggerAddAction(trg,callFun)
 end
 
@@ -35,7 +35,7 @@ end
 cevent.spell_effect = function(whichUnit,callFun)
     local trg = cj.CreateTrigger()
     local p = cj.GetOwningPlayer(whichUnit)
-    cj.TriggerRegisterUnitEvent(trg, whichUnit, cj.EVENT_UNIT_SPELL_EFFECT)
+    cj.TriggerRegisterUnitEvent(trg, whichUnit, EVENT_UNIT_SPELL_EFFECT)
     cj.TriggerAddAction(trg,callFun)
 end
 
@@ -44,7 +44,7 @@ end
 ---@param callFunc onUnitdDeath
 ---@return any
 cevent.unit_death = function(callFun)
-    registerAllPlayerUnitEvent(cj.EVENT_PLAYER_UNIT_DEATH,callFun)
+    registerAllPlayerUnitEvent(EVENT_PLAYER_UNIT_DEATH,callFun)
 end
 
 --- 单位获得物品
@@ -52,7 +52,7 @@ end
 ---@param callFunc onUnitdPickup
 ---@return any
 cevent.unit_pickup = function(callFun)
-    registerAllPlayerUnitEvent(cj.EVENT_PLAYER_UNIT_PICKUP_ITEM,callFun)
+    registerAllPlayerUnitEvent(EVENT_PLAYER_UNIT_PICKUP_ITEM,callFun)
 end
 
 --- 单位使用物品
@@ -60,7 +60,7 @@ end
 ---@param callFunc onUnitUse
 ---@return any
 cevent.unit_use = function(callFun)
-    registerAllPlayerUnitEvent(cj.EVENT_PLAYER_UNIT_USE_ITEM,callFun)
+    registerAllPlayerUnitEvent(EVENT_PLAYER_UNIT_USE_ITEM,callFun)
 end
 
 --- 单位卖出物品 注意贩卖单位需要设为中立被动，如果在同一阵营，会导致GetBuyingUnit获取不到unit
@@ -68,14 +68,14 @@ end
 ---@param callFunc onUnitSell
 ---@return any
 cevent.unit_sell = function(callFun)
-    registerAllPlayerUnitEvent(cj.EVENT_PLAYER_UNIT_SELL,callFun)
+    registerAllPlayerUnitEvent(EVENT_PLAYER_UNIT_SELL,callFun)
 end
 --- 单位丢弃物品
 ---@alias onUnitDrop
 ---@param callFunc onUnitDrop
 ---@return any
 cevent.unit_drop = function(callFun)
-    registerAllPlayerUnitEvent(cj.EVENT_PLAYER_UNIT_DROP_ITEM,callFun)
+    registerAllPlayerUnitEvent(EVENT_PLAYER_UNIT_DROP_ITEM,callFun)
 end
 --- 单位伤害
 ---@alias onUnitdDamage
@@ -116,7 +116,7 @@ function InitMapUnit_damageEvent()
     cj.ForGroup(pg,function ()
         local u = cj.GetEnumUnit()
         if u ~= nil and cj.GetUnitAbilityLevel(u, 'Aloc') <= 0 then
-            cj.TriggerRegisterUnitEvent(yd_DamageEventTrigger, u, cj.EVENT_UNIT_DAMAGED)
+            cj.TriggerRegisterUnitEvent(yd_DamageEventTrigger, u, EVENT_UNIT_DAMAGED)
         end
     end)
 end
@@ -141,7 +141,7 @@ function YDWEAnyUnitDamagedFilter()
     -- print(uf,uname(uf),"GetFilterUnit enter map will register damage event???")
     -- print(ue,uname(ue),"GetEnumUnit enter map will register damage event???")
     if u ~= nil and cj.GetUnitAbilityLevel(u, 'Aloc') <= 0 then
-        cj.TriggerRegisterUnitEvent(yd_DamageEventTrigger, u, cj.EVENT_UNIT_DAMAGED)
+        cj.TriggerRegisterUnitEvent(yd_DamageEventTrigger, u, EVENT_UNIT_DAMAGED)
     end
     return false
 end
