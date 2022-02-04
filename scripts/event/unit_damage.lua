@@ -24,6 +24,8 @@ local function unit_damage()
             else
                 str = DrawPink(tostring(math.floor(dmg)))
             end
+        else
+            str = DrawPink(tostring(math.floor(dmg)))
         end
 
         local yadianna = Unit.new(ut)
