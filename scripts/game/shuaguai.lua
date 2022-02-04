@@ -21,8 +21,8 @@ local function one_wave()
         local y = cj.GetRectCenterY(r)
         local u = cj.PlaceRandomUnit(AIPool, ENMIMY_PLAYER, x, y, 0)
     -- 设置单位属性 注意要先设置最大生命值，否则设置当前生命值超出了还是无法改变生命值
-        local life = 20 + boci * 3
-        local damage = 7 + boci * 1
+        local life = 25 + boci * GameDifficulty * 10
+        local damage = 5 + boci * GameDifficulty * 0.5
         japi.SetUnitState(u, cj.UNIT_STATE_MAX_LIFE, life)
         japi.SetUnitState(u, cj.UNIT_STATE_LIFE, life)
         japi.SetUnitState(u, cj.ConvertUnitState(0x12), damage)
