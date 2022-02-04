@@ -2,11 +2,10 @@ local function unit_death()
     cevent.unit_death(function ()
         local du = cj.GetTriggerUnit()
         local ku = cj.GetKillingUnit()
-        local p = cj.GetOwningPlayer(ku)
 
         if cj.IsUnitEnemy(du, HOST_PLAYER) then
             -- 计分
-            local player = PlayerGroup:Get(p)
+            local player = PlayerGroup:Get(ku)
             player.kill = player.kill + 1
             -- 引用掉落池,50%几率
             if math.random(100) > 50 then
