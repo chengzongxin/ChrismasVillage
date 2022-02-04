@@ -1,5 +1,5 @@
 local function show_dialog_diffculty()
-    Dialog(
+    Dialog.create(
         HOST_PLAYER,
         "|Cff00FF7F请选择难度|r",
         {"|Cff00FF7F初出茅庐（|r|Cffffcc001|r|Cff00ff7f）|r",'1'},
