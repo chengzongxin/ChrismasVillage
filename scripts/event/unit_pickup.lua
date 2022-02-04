@@ -7,21 +7,22 @@ local function unique_item_judge(unit,item)
 
     print("========================")
     print(item_id)
-    if isins and PLAYERS.HERO(unit).sword == 1 then
+    local hero = PlayerGroup:GetPlayerHero(unit)
+    if isins and hero.sword == 1 then
         
         ItemUserData:SetSystemDrop(item,1)
         cj.SetItemPosition(item,cj.GetUnitX(unit),cj.GetUnitY(unit))
         return true
     end
 
-    if isina and PLAYERS.HERO(unit).armor == 1 then
+    if isina and hero.armor == 1 then
         
         ItemUserData:SetSystemDrop(item,1)
         cj.SetItemPosition(item,cj.GetUnitX(unit),cj.GetUnitY(unit))
         return true
     end
 
-    if isinr and PLAYERS.HERO(unit).fingerring == 1 then
+    if isinr and hero.fingerring == 1 then
         
         ItemUserData:SetSystemDrop(item,1)
         cj.SetItemPosition(item,cj.GetUnitX(unit),cj.GetUnitY(unit))

@@ -6,7 +6,8 @@ local function unit_death()
 
         if cj.IsUnitEnemy(du, HOST_PLAYER) then
             -- 计分
-            PLAYERS[p].kill = PLAYERS[p].kill + 1
+            local player = PlayerGroup:Get(p)
+            player.kill = player.kill + 1
             -- 引用掉落池,50%几率
             if math.random(100) > 50 then
                 local item = cj.PlaceRandomItem(ItemPool,cj.GetUnitX(du),cj.GetUnitY(du))

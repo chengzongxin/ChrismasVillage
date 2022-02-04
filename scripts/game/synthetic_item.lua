@@ -36,14 +36,15 @@ function synthetic_item(unit,item,iteral)
     print(isina)
     print(isinr)
     -- 获得了装备
+    local herov = PlayerGroup:GetPlayerHero(unit)
     if isins then
-        PLAYERS.HERO(unit).sword = 1
+        herov.sword = 1
         synthetic_sword(item,idxs)
     elseif isina then
-        PLAYERS.HERO(unit).armor = 1
+        herov.armor = 1
         synthetic_armor(item,idxa)
     elseif isinr then
-        PLAYERS.HERO(unit).fingerring = 1
+        herov.fingerring = 1
         synthetic_ring(item,idxr)
     else
         -- 迭代器,拾取到结晶后,再回调开始合成方法

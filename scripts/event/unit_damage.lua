@@ -12,8 +12,8 @@ local function unit_damage()
 
         -- 判断是否暴击
         if cj.IsUnitAlly(us, HOST_PLAYER) then
-            local crt = PLAYERS.HERO(us).critical
-            local crtp = PLAYERS.HERO(us).criticalpower
+            local crt = PlayerGroup:GetPlayerHero(us).critical
+            local crtp = PlayerGroup:GetPlayerHero(us).criticalpower
             local binggo = math.random(10)/10.0 < crt/100.0
             if binggo then
                 dmg = dmg*crtp

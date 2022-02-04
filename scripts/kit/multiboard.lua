@@ -21,14 +21,14 @@ MULTIBOARD = function ()
 
     cj.MultiboardSetTitleText(mb,"Chirsmas Village")
     cj.MultiboardSetColumnCount(mb,#titles)
-    cj.MultiboardSetRowCount(mb,#PlayerGroup+1)
+    cj.MultiboardSetRowCount(mb,PlayerGroup.count+1)
     cj.MultiboardSetItemsStyle(mb,true,true) -- 显示文字，图标
     cj.MultiboardSetItemsValue(mb,"--")
     cj.MultiboardSetItemsWidth(mb,0.05) -- 占屏幕宽度 5%
     cj.MultiboardSetItemsValueColor(mb,0,255,255,1)
     cj.MultiboardDisplay(mb,true)
 
-    for i = 0, #PlayerGroup do
+    for i = 0, PlayerGroup.count do
         -- 设置第一行图标文字，多面板是从{0,0}开始
         for j = 0, #titles - 1 do
             local item = cj.MultiboardGetItem(mb, i, j)
@@ -57,14 +57,15 @@ end
 
 REFRESH_MULTIBOARD = function ()
     local mb = multiboard.mb
-    for i = 1, #PlayerGroup do
-        local p = PlayerGroup[i]
+    local pg = PlayerGroup:playerList()
+    for i = 1, #pg do
+        local p = pg[i]
         -- name
         local item = cj.MultiboardGetItem(mb, i,0)
-        cj.MultiboardSetItemValue(item, PLAYERS[p].hero.name)
+        cj.MultiboardSetItemValue(item, p.hero.name)
         -- kill
         local item = cj.MultiboardGetItem(mb, i,1)
-        cj.MultiboardSetItemValue(item, string.format('%d',PLAYERS[p].kill))
+        cj.MultiboardSetItemValue(item, string.format('%d',p.kill))
     end
 end
 

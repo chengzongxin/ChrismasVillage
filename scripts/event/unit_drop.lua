@@ -6,22 +6,23 @@ local function drop_item_judge(unit,item)
     local isinr = isintable(item_id,RING_LIST_IDS)
 
     print("准备丢弃")
-    if isins and PLAYERS.HERO(unit).sword == 1 then
-        PLAYERS.HERO(unit).sword = 0
+    local hero = PlayerGroup:GetPlayerHero(unit)
+    if isins and hero.sword == 1 then
+        hero.sword = 0
         ItemUserData:SetSystemDrop(item,0)
         print("丢弃了武器")
         return true
     end
 
-    if isina and PLAYERS.HERO(unit).armor == 1 then
-        PLAYERS.HERO(unit).armor = 0
+    if isina and hero.armor == 1 then
+        hero.armor = 0
         ItemUserData:SetSystemDrop(item,0)
         print("丢弃了盔甲")
         return true
     end
 
-    if isinr and PLAYERS.HERO(unit).fingerring == 1 then
-        PLAYERS.HERO(unit).fingerring = 0
+    if isinr and hero.fingerring == 1 then
+        hero.fingerring = 0
         ItemUserData:SetSystemDrop(item,0)
         print("丢弃了戒指")
         return true

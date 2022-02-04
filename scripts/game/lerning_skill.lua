@@ -1,7 +1,7 @@
 Lerning_skill = function (unit,skillId)
     print("type of unit is : "..type(unit))
-    
-    local ringID = PLAYERS.HERO(unit).ring
+    local hero = PlayerGroup:GetPlayerHero(unit)
+    local ringID = hero.ring
     if ringID then
         -- 存在需要先删除之前的光环
         cj.UnitRemoveAbility(unit,ringID)
@@ -9,7 +9,7 @@ Lerning_skill = function (unit,skillId)
 
     local suc = cj.UnitAddAbility(unit,skillId)
     if suc then
-        PLAYERS.HERO(unit).ring = skillId -- 记录技能
+        hero.ring = skillId -- 记录技能
         
         local skillName = slk.ability[skillId].Name or ""
         

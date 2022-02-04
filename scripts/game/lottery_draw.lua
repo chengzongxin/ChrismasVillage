@@ -22,10 +22,10 @@ lotter_draw = function (unit)
 end
 
 function lottery_action(unit, needKill)
-    
-    local killcount = PLAYERS:GetPlayer(unit).kill
+    local player = PlayerGroup:Get(unit)
+    local killcount = player.kill
     if killcount < needKill then
-        echo("杀敌数不足！",PLAYERS:GetPlayer(unit).id)
+        echo("杀敌数不足！",player.id)
         return
     end
 
@@ -40,7 +40,7 @@ function lottery_action(unit, needKill)
     end
 
     -- 减去已消耗杀敌数
-    PLAYERS:GetPlayer(unit).kill = PLAYERS:GetPlayer(unit).kill - needKill
+    player.kill = player.kill - needKill
 end
 
 function lottery_one(u)

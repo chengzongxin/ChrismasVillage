@@ -27,6 +27,8 @@ end
 function main()
 	cj.FogEnable(false)
 	cj.FogMaskEnable(false)
+	-- 游戏初始化
+	GAME_INIT()
 	-- 選擇英雄
 	SELECT_HERO()
 	-- 刷怪

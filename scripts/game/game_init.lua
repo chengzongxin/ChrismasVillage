@@ -34,41 +34,29 @@ local function SKILL_LIST_IDS_MAP_init()
     for i = 1, #SKILL_LIST_ITEM_IDS do
         SKILL_LIST_IDS_MAP[SKILL_LIST_ITEM_IDS[i]] = SKILL_LIST_IDS[i]
     end
-
-    -- for key, value in pairs(SKILL_LIST_IDS_MAP) do
-    --     echo(key..value)
-    -- end
 end
 
--- 设置初始黄金
-local function addPlayerInitGold(p,delta)
-    -- SetPlayerState(whichPlayer, whichPlayerState, GetPlayerState(whichPlayer, whichPlayerState) + delta)
-    cj.SetPlayerState(p, cj.PLAYER_STATE_RESOURCE_GOLD, cj.GetPlayerState(p, cj.PLAYER_STATE_RESOURCE_GOLD) + delta)
-end
 
-local function playerGroup()
+local function playerGroup_init()
+    PlayerGroup = Players.new()
     -- 循环遍历玩家数
-    local players = {}
     for i = 0, MAX_PLAYER_QTY - 1 do
         local p = cj.Player(i)
         -- 玩家的控制者是用户，并且游戏状态是正在游戏
         if cj.GetPlayerController(p) == cj.MAP_CONTROL_USER and cj.GetPlayerSlotState(p) == cj.PLAYER_SLOT_STATE_PLAYING then
             print(cj.GetPlayerName(p).." Player Controller is : "..cj.GetPlayerController(p).."  slot state : "..cj.GetPlayerSlotState(p).."handle : "..p)
-            table.insert(PlayerGroup, p)
             -- 全局初始化
-            PLAYERS.player_create(p)
-
-            addPlayerInitGold(p,200)
-
-            print("PLAYERS["..p.."].name : "..PLAYERS[p].name)
-            print("PLAYERS["..p.."].kill : "..PLAYERS[p].kill)
+            local player = Player.new(p)
+            player:addGold(200)
+            PlayerGroup:put(player)
         end
     end
     -- 查询完成
-    print("print all players,count = "..#PlayerGroup)
-    for _, value in pairs(PlayerGroup) do
-        local countStr = string.format( " |cffffff00%d|r ", #PlayerGroup)
-        echo("本局游戏玩家数量为"..countStr.."人",value,30,0,0)
+    local pcount = PlayerGroup.count
+    print("print all players,count = "..pcount)
+    for _, idx in pairs(PlayerGroup.playerIndexs) do
+        local countStr = string.format( " |cffffff00%d|r ", pcount)
+        echo("本局游戏玩家数量为"..countStr.."人",PlayerGroup:GetWithIndex(idx).handle,30,0,0)
     end
 end
 
@@ -79,16 +67,16 @@ local function itemPool_init()
     cj.ItemPoolAddItemType(ip,SWORD_LIST_IDS[1],1)
     cj.ItemPoolAddItemType(ip,ARMOR_LIST_IDS[1],1)
     cj.ItemPoolAddItemType(ip,RING_LIST_IDS[1],1)
-    for index, value in ipairs(SKILL_LIST_ITEM_IDS) do
-        cj.ItemPoolAddItemType(ip,value,1)
+    for index, player in ipairs(SKILL_LIST_ITEM_IDS) do
+        cj.ItemPoolAddItemType(ip,player,1)
     end
     ItemPool = ip
 end
 -- 刷怪池
 local function AIPool_init()
     local aip = cj.CreateUnitPool()
-    for _, value in ipairs(AI_LIST_IDS) do
-        cj.UnitPoolAddUnitType(aip, value, 1)
+    for _, player in ipairs(AI_LIST_IDS) do
+        cj.UnitPoolAddUnitType(aip, player, 1)
     end
     AIPool = aip
 end
@@ -100,8 +88,10 @@ local function lottery_pool_init()
 end
 
 
-playerGroup()
-itemPool_init()
-AIPool_init()
-SKILL_LIST_IDS_MAP_init()
-lottery_pool_init()
+function GAME_INIT()
+    playerGroup_init()
+    itemPool_init()
+    AIPool_init()
+    SKILL_LIST_IDS_MAP_init()
+    lottery_pool_init()
+end
