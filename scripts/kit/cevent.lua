@@ -98,20 +98,48 @@ end
 function YDWEAnyUnitDamagedEnumUnit()
     local t = cj.CreateTrigger()
     local r = cj.CreateRegion()
-    local g = cj.CreateGroup()
+    -- local g = cj.CreateGroup()
     print("damage8")
+    InitMapUnit_damageEvent() -- 添加初始单位伤害事件
+    -- 添加进入区域事件
     cj.RegionAddRect(r, cj.GetWorldBounds())
     print(cj.GetRectMaxY(cj.GetWorldBounds()))
     cj.TriggerRegisterEnterRegion(t, r, YDWEAnyUnitDamagedFilter())
     cj.TriggerAddAction(t,YDWEAnyUnitDamagedFilter)
-    cj.GroupEnumUnitsInRect(g, cj.GetWorldBounds(), YDWEAnyUnitDamagedFilter())
-    cj.DestroyGroup(g)
+    -- cj.GroupEnumUnitsInRect(g, cj.GetWorldBounds(), YDWEAnyUnitDamagedFilter())
+    -- cj.DestroyGroup(g)
+end
+
+-- 添加初始伤害事件
+function InitMapUnit_damageEvent()
+    local pg = GetUnitsInRectAll(cj.GetWorldBounds())
+    cj.ForGroup(pg,function ()
+        local u = cj.GetEnumUnit()
+        if u ~= nil and cj.GetUnitAbilityLevel(u, 'Aloc') <= 0 then
+            cj.TriggerRegisterUnitEvent(yd_DamageEventTrigger, u, cj.EVENT_UNIT_DAMAGED)
+        end
+    end)
+end
+
+function GetUnitsInRectAll(r)
+    return GetUnitsInRectMatching(r, nil)
+end
+
+function GetUnitsInRectMatching(r,filter)
+    local g = cj.CreateGroup()
+    cj.GroupEnumUnitsInRect(g, r, filter)
+    cj.DestroyBoolExpr(filter)
+    -- cj.DestroyGroup(g)
+    return g
 end
 
 function YDWEAnyUnitDamagedFilter()
     local u = cj.GetTriggerUnit()
-    local un = uname(u) or "nil unit ..."
-    -- print(un.."enter map will register damage event???")
+    -- local uf = cj.GetFilterUnit()
+    -- local ue = cj.GetEnumUnit()
+    -- print(u,uname(u),"GetTriggerUnit enter map will register damage event???")
+    -- print(uf,uname(uf),"GetFilterUnit enter map will register damage event???")
+    -- print(ue,uname(ue),"GetEnumUnit enter map will register damage event???")
     if u ~= nil and cj.GetUnitAbilityLevel(u, 'Aloc') <= 0 then
         cj.TriggerRegisterUnitEvent(yd_DamageEventTrigger, u, cj.EVENT_UNIT_DAMAGED)
     end
