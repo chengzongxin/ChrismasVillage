@@ -23,16 +23,20 @@ if not fs.exists(root / 'MoeHero.w3x') then
     print('地图不存在', root / 'MoeHero.w3x')
     return
 end
-print(ydwe / 'YDWEConfig.exe')
-subprocess.spawn{
-    ydwe / 'YDWEConfig.exe',
-    '-launchwar3',
-    '-loadfile', root / 'MoeHero.w3x'
-}
 
--- subprocess.spawn {
---     ydwe / 'ydwe.exe',
---     '-war3',
---     '-loadfile', root / 'MoeHero.w3x',
+-- 1.31 debug工具
+print(ydwe / 'YDWEConfig.exe')
+-- subprocess.spawn{
+--     ydwe / 'YDWEConfig.exe',
+--     '-launchwar3',
+--     '-loadfile', root / 'MoeHero.w3x'
 -- }
+
+-- 1.32 console窗口
+print(ydwe / 'ydwe.exe')
+subprocess.spawn {
+    ydwe / 'ydwe.exe',
+    '-war3',
+    '-loadfile', root / 'MoeHero.w3x',
+}
 
