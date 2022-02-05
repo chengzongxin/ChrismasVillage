@@ -1,7 +1,28 @@
-
 multiboard = {}
 
-MULTIBOARD = function ()
+local function refresh_items()
+    local mb = multiboard.mb
+    local pg = PlayerGroup:playerList()
+    for i = 1, #pg do
+        local p = pg[i]
+        -- name
+        local item = cj.MultiboardGetItem(mb, i,0)
+        cj.MultiboardSetItemValue(item, p.hero.name)
+        -- kill
+        local item = cj.MultiboardGetItem(mb, i,1)
+        cj.MultiboardSetItemValue(item, string.format('%d',p.kill))
+    end
+end
+
+
+local function refresh_multiboard()
+    local t = cj.CreateTimer()
+    cj.TimerStart(t, 1.0, true ,function ()
+        refresh_items()
+    end)
+end
+
+local function create_multiboard()
     -- multiboard
     local mb = cj.CreateMultiboard()
     multiboard.mb = mb
@@ -44,28 +65,9 @@ MULTIBOARD = function ()
         end
     end
 
-    CREATE_MULTIBOARD_TIMER()
+    refresh_multiboard()
 end
 
-CREATE_MULTIBOARD_TIMER = function ()
-    local t = cj.CreateTimer()
-    cj.TimerStart(t, 1.0, true ,function ()
-        REFRESH_MULTIBOARD()
-    end)
+MULTIBOARD = function ()
+    create_multiboard()
 end
-
-
-REFRESH_MULTIBOARD = function ()
-    local mb = multiboard.mb
-    local pg = PlayerGroup:playerList()
-    for i = 1, #pg do
-        local p = pg[i]
-        -- name
-        local item = cj.MultiboardGetItem(mb, i,0)
-        cj.MultiboardSetItemValue(item, p.hero.name)
-        -- kill
-        local item = cj.MultiboardGetItem(mb, i,1)
-        cj.MultiboardSetItemValue(item, string.format('%d',p.kill))
-    end
-end
-

@@ -1,4 +1,4 @@
-local function show_dialog_diffculty()
+local function show_dialog_diffculty(callFun)
     Dialog.create(
         HOST_PLAYER,
         "|Cff00FF7F请选择难度|r",
@@ -12,9 +12,10 @@ local function show_dialog_diffculty()
                 { "ffff00", idx },
             })
             echo(txt)
+            callFun()
         end)
 end
 
-SELECT_DIFFICULTY = function ()
-    show_dialog_diffculty()
+SELECT_DIFFICULTY = function (callFun)
+    show_dialog_diffculty(callFun)
 end

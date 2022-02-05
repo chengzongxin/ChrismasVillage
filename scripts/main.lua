@@ -29,11 +29,12 @@ function main()
 	-- 游戏初始化
 	GAME_INIT()
 	-- 选择难度
-	SELECT_DIFFICULTY()
+	SELECT_DIFFICULTY(function ()
+		-- 多面板,需要在选择后刷新，否则会导致不显示多面板
+		MULTIBOARD()
+	end)
 	-- 選擇英雄
 	SELECT_HERO()
 	-- 刷怪
 	SHUAGUAI()
-	-- 多面板
-	MULTIBOARD()
 end
