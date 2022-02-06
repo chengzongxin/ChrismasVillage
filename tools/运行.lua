@@ -24,19 +24,19 @@ if not fs.exists(root / 'MoeHero.w3x') then
     return
 end
 
--- 1.31 debug工具
+-- 1.31 debug工具, 需要1.31ydwe关联w3x，开启调试和console
 print(ydwe / 'YDWEConfig.exe')
--- subprocess.spawn{
---     ydwe / 'YDWEConfig.exe',
---     '-launchwar3',
---     '-loadfile', root / 'MoeHero.w3x'
--- }
+subprocess.spawn{
+    ydwe / 'YDWEConfig.exe',
+    '-launchwar3',
+    '-loadfile', root / 'MoeHero.w3x'
+}
 
 -- 1.32 console窗口
 print(ydwe / 'ydwe.exe')
-subprocess.spawn {
-    ydwe / 'ydwe.exe',
-    '-war3',
-    '-loadfile', root / 'MoeHero.w3x',
-}
+-- subprocess.spawn {
+--     ydwe / 'ydwe.exe',
+--     '-war3',
+--     '-loadfile', root / 'MoeHero.w3x',
+-- }
 
