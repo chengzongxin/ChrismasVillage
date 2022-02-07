@@ -67,5 +67,5 @@ end
 function Hero:attackMax()
     -- print("super",self.super:attackMax()) --调用父类
     -- print("self",cj.GetUnitState(self.handle,UNIT_STATE_LIFE)) --覆盖实现
-    return cj.GetUnitState(self.handle,UNIT_STATE_LIFE)
+    return JassJapi.GetUnitState(self.handle,UNIT_STATE_ATTACK_MAX)
 end
