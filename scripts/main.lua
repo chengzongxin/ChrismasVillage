@@ -16,7 +16,7 @@ require 'game.lerning_skill'
 require 'game.shuaguai'
 require 'game.synthetic_item'
 
--- require 'game.test'
+require 'game.test'
 
 local std_print = print
 
