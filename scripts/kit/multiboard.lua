@@ -7,6 +7,12 @@ local function refresh_items()
         local p = pg[i]
         -- name
         local item = cj.MultiboardGetItem(mb, i,0)
+        -- cj.MultiboardSetItemIcon(item, p.hero.Art)
+        local uicon = p.hero.art
+        print(uicon)
+        print("ReplaceableTextures\\CommandButtons\\BTNDaggerOfEscape.blp")
+        -- cj.MultiboardSetItemIcon(item, "ReplaceableTextures\\CommandButtons\\BTNDaggerOfEscape.blp")
+        cj.MultiboardSetItemIcon(item, p.hero.art)
         cj.MultiboardSetItemValue(item, p.hero.name)
         -- kill
         local item = cj.MultiboardGetItem(mb, i,1)

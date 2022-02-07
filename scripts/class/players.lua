@@ -117,7 +117,7 @@ end
 -- 玩家添加英雄
 function Player:addHero(hero)
     self.hero = hero
-    for key, value in pairs(self) do
+    for key, value in pairs(self.hero) do
         print("player:addHero",key,value,self)
     end
 end
@@ -139,9 +139,12 @@ end
 function Hero.new(handle)
     local t = {
         handle = handle,
+        id = cj.GetUnitTypeId(handle),
         hp = 0,
         mp = 0,
         name = cj.GetUnitName(handle),
+        -- art = string.format('%q', JassSlk.unit[cj.GetUnitTypeId(handle)].Art),  -- 不需要转义 反斜杠 '\'
+        art = JassSlk.unit[cj.GetUnitTypeId(handle)].Art,
         critical = 30,
         criticalpower = 2,
         ring = 0,
