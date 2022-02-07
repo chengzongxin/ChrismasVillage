@@ -1,13 +1,13 @@
 -- 单位类
 Unit = {}
-Unit.__index = Unit
+Unit.__index = Unit --  当访问table a中不存在的元素时，既不会查询a的__index，也不会查询a元表的其他元素，只会查询a元表的__index。
 
--- 英雄类
+-- 英雄类，继承单位类
 Hero = {}
 Hero.super = Unit
-Hero.__index = Unit
--- Hero.__newindex = Unit --继承Unit方法
-
+setmetatable(Hero, {__index = Hero.super}) -- Hero中没有的方法会调用super方法，实现继承
+Hero.__index = Hero -- 当Hero内产生的实例，会访问Hero中方法
+-- Hero.__newindex = Unit
 -- 创建单位
 ---@param handle 单位handle
 ---@return 单位table
@@ -16,8 +16,6 @@ Unit.new = function (handle)
         handle = handle,
         id = cj.GetUnitTypeId(handle), -- integer ..str2id('e003.ewsp')
         name = cj.GetUnitName(handle),
-        hp = 0,
-        mp = 0,
         -- art = string.format('%q', JassSlk.unit[cj.GetUnitTypeId(handle)].Art),  -- 不需要转义 反斜杠 '\'
         art = JassSlk.unit[cj.GetUnitTypeId(handle)].Art,
     }
@@ -54,6 +52,7 @@ end
 -- 创建英雄
 function Hero.new(handle)
     local t = Unit.new(handle)
+    setmetatable(t,Hero)
     t.critical = 30
     t.criticalpower = 2
     t.ring = 0
@@ -63,4 +62,10 @@ function Hero.new(handle)
     return t
 end
 
-
+-- 重载
+---@return 最大攻击力
+function Hero:attackMax()
+    -- print("super",self.super:attackMax()) --调用父类
+    -- print("self",cj.GetUnitState(self.handle,UNIT_STATE_LIFE)) --覆盖实现
+    return cj.GetUnitState(self.handle,UNIT_STATE_LIFE)
+end
