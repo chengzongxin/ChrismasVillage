@@ -2,13 +2,11 @@
 PlayerGroup = {}
 -- 玩家组类
 Players = {}
-Players["__index"] = Players  -- setmetatable(t,Players) && Players["__index"] = Players 两句实现面向对象，否则不会查找到对应的table
+Players.__index = Players  -- setmetatable(t,Players) && Players["__index"] = Players 两句实现面向对象，否则不会查找到对应的table
 -- 玩家
 Player = {}
-Player["__index"] = Player
--- 英雄
-Hero = {}
-Hero["__index"] = Hero
+Player.__index = Player
+
 -- 全局玩家元表
 Playersmt = {
     -- 装入
@@ -132,28 +130,6 @@ function Player:selectUnit(whichUnit)
         cj.ClearSelection()
         cj.SelectUnit(whichUnit, true)
     end
-end
-
------------------------------ 英雄类 -----------------------------
--- 创建英雄
-function Hero.new(handle)
-    local t = {
-        handle = handle,
-        id = cj.GetUnitTypeId(handle),
-        hp = 0,
-        mp = 0,
-        name = cj.GetUnitName(handle),
-        -- art = string.format('%q', JassSlk.unit[cj.GetUnitTypeId(handle)].Art),  -- 不需要转义 反斜杠 '\'
-        art = JassSlk.unit[cj.GetUnitTypeId(handle)].Art,
-        critical = 30,
-        criticalpower = 2,
-        ring = 0,
-        sword = 0,
-        armor = 0,
-        fingerring = 0,
-    }
-    setmetatable(t,Hero)
-    return t
 end
 
 
