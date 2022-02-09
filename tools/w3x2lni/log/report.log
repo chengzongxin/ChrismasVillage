@@ -2,27 +2,8 @@
 输出路径：C:/Users/Administrator/Desktop/ChrismasVillage/MoeHero.w3x
 输入格式：Lni
 输出模式：obj
-结果：1 个错误，0 条警告
-用时：2.240 秒
-==========================
-严重错误 (1)
-==========================
-保存触发器失败 - 请设置YDWE关联地图
-stack traceback:
-	[C]: in function 'error'
-	.\core\slk/frontend_trg.lua:86: in method 'frontend_trg'
-	.\core\slk/backend_wtg.lua:231: in method 'backend_wtg'
-	.\core\slk/backend.lua:102: in function <.\core\slk/backend.lua:101>
-	[C]: in function 'xpcall'
-	.\core\slk/backend.lua:101: in upvalue 'convert_wtg'
-	.\core\slk/backend.lua:407: in method 'backend'
-	.\backend\convert.lua:140: in function 'backend.convert'
-	.\backend\cli\obj.lua:4: in function 'backend.cli.obj'
-	.\backend\init.lua:12: in main chunk
-	[C]: in function 'require'
-	...or\Desktop\ChrismasVillage\tools\w3x2lni\script\main.lua:2: in main chunk
-	[C]: in ?
-
+结果：0 个错误，0 条警告
+用时：2.124 秒
 ==========================
 其他 (4)
 ==========================

@@ -95,6 +95,7 @@ end
 
 
 function GAME_INIT()
+    JassJapi.DzLoadToc("fonts.ttf")
     game_setting()
     playerGroup_init()
     itemPool_init()

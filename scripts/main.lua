@@ -37,4 +37,17 @@ function main()
 	SELECT_HERO()
 	-- 刷怪
 	SHUAGUAI()
+
+	
 end
+
+
+function ui_5()
+    local ui_5 = japi.DzCreateFrame("Demo_TextButton", japi.DzGetGameUI(), 0)
+    japi.DzFrameSetPoint( ui_5, 2, japi.DzGetGameUI(), 2, -0.09 , -0.09 )
+    japi.DzFrameSetScript(ui_5,1, "MouseClick", false)
+    japi.DzFrameSetScript(ui_5,2, "MouseEnter", false)
+    japi.DzFrameSetScript(ui_5,3, "MouseLeave", false)
+    print("ui_5",ui_5)
+end
+
